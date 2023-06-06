@@ -244,11 +244,7 @@ function EcommerceOrder() {
         filterable: true,
         Cell: (cellProps) => {
           return <Total {...cellProps} />;
-        }
-
-
-
-        
+        } 
       },
       {
         Header: 'Payment Status',
@@ -496,7 +492,7 @@ function EcommerceOrder() {
                         type="submit"
                         className="btn btn-success save-user"
                       >
-                        Save
+                        Save Button added
                       </button>
                     </div>
                   </Col>
