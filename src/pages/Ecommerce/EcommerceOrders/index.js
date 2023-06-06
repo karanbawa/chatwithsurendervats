@@ -184,6 +184,15 @@ function EcommerceOrder() {
     toggle();
   };
 
+
+
+
+
+
+
+
+
+
   //delete order
   const [deleteModal, setDeleteModal] = useState(false);
 
@@ -244,6 +253,10 @@ function EcommerceOrder() {
         Cell: (cellProps) => {
           return <Total {...cellProps} />;
         }
+
+
+
+        
       },
       {
         Header: 'Payment Status',
