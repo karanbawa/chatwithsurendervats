@@ -90,6 +90,14 @@ function EcommerceOrder() {
       badgeclass: Yup.string().required("Please Enter Your Badge Class"),
       paymentMethod: Yup.string().required("Please Enter Your Payment Method"),
     }),
+
+
+
+
+
+
+
+    
     onSubmit: (values) => {
       if (isEdit) {
         const updateOrder = {
