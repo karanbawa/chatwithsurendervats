@@ -252,11 +252,7 @@ function EcommerceOrder() {
         filterable: true,
         Cell: (cellProps) => {
           return <Total {...cellProps} />;
-        }
-
-
-
-        
+        } 
       },
       {
         Header: 'Payment Status',
