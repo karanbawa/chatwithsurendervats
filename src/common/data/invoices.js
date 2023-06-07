@@ -28,7 +28,7 @@ const invoiceList = [
         },
         {
           id: 3,
-          item: "TWT - Admin Dashboard page",
+          item: "TWT - Admin",
           price: "$499.00",
         },
       ],
