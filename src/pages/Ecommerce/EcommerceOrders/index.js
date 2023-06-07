@@ -90,6 +90,14 @@ function EcommerceOrder() {
       badgeclass: Yup.string().required("Please Enter Your Badge Class"),
       paymentMethod: Yup.string().required("Please Enter Your Payment Method"),
     }),
+
+
+
+
+
+
+
+    
     onSubmit: (values) => {
       if (isEdit) {
         const updateOrder = {
@@ -492,7 +500,7 @@ function EcommerceOrder() {
                         type="submit"
                         className="btn btn-success save-user"
                       >
-                        Save Button added
+                        Save button check
                       </button>
                     </div>
                   </Col>
