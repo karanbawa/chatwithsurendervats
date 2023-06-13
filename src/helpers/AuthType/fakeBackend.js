@@ -1,6 +1,6 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import * as url from "../url_helper";
+import * as url from "../fakeurl_helper";
 import accessToken from "../jwt-token-access/accessToken";
 import {
   calenderDefaultCategories,
