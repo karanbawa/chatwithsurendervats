@@ -14,6 +14,7 @@ import {
   invoiceList,
   messages,
   orders,
+  books,
   productsData,
   projects,
   recentProducts,
@@ -631,6 +632,58 @@ const fakeBackend = () => {
           resolve([200, config.headers.order]);
         } else {
           reject([400, "Cannot delete order"]);
+        }
+      });
+    });
+  });
+
+  mock.onGet(url.GET_BOOKS).reply(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (books) {
+          // Passing fake JSON data as response
+          resolve([200, books]);
+        } else {
+          reject([400, "Cannot get books"]);
+        }
+      });
+    });
+  });
+
+  mock.onPost(url.ADD_NEW_BOOK).reply(book => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (book && book.data) {
+          // Passing fake JSON data as response
+          resolve([200, book.data]);
+        } else {
+          reject([400, "Cannot add book"]);
+        }
+      });
+    });
+  });
+
+  mock.onPut(url.UPDATE_BOOK).reply(book => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (book && book.data) {
+          // Passing fake JSON data as response
+          resolve([200, book.data]);
+        } else {
+          reject([400, "Cannot update book"]);
+        }
+      });
+    });
+  });
+
+  mock.onDelete(url.DELETE_BOOK).reply(config => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (config && config.headers) {
+          // Passing fake JSON data as response
+          resolve([200, config.headers.book]);
+        } else {
+          reject([400, "Cannot delete book"]);
         }
       });
     });

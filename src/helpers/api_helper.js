@@ -2,6 +2,7 @@ import axios from "axios";
 // import apiKey from "./jwt-token-access/apiKey";
 
 // const apiKeys = apiKey;
+const apiKeys = 'GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj';
 //apply base url for axios
 const API_URL = "https://api.univolenitsolutions.com";
 // const API_URL = "http://localhost:3005";

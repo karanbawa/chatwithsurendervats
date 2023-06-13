@@ -629,6 +629,37 @@ const orders = [
   },
 ];
 
+const books = [
+  {
+    id: 2,
+    
+    bookName: "Book 1",
+    bookCategory:"general",
+   
+    bookStatus: "Active",
+ 
+  },
+  {
+    id: 3,
+    
+    bookName: "Book 2",
+    bookCategory:"general",
+   
+    bookStatus: "Inactive",
+  
+  },
+  {
+    id: 4,
+    
+    bookName: "Book 3",
+    bookCategory:"general",
+
+    bookStatus: "Draft",
+   
+  },
+ 
+];
+
 const cartData = {
   products: [
     {
@@ -1013,6 +1044,7 @@ export {
   comments,
   discountData,
   orders,
+  books,
   shops,
   customerData,
   cartData,

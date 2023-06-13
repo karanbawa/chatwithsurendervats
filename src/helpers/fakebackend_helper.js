@@ -151,6 +151,19 @@ export const updateOrder = order => put(url.UPDATE_ORDER, order);
 export const deleteOrder = order =>
   del(url.DELETE_ORDER, { headers: { order } });
 
+  // get orders
+export const getBooks = () => get(url.GET_BOOKS);
+
+// add order
+export const addNewBook = book => post(url.ADD_NEW_BOOK, book);
+
+// update order
+export const updateBook = book => put(url.UPDATE_BOOK, book);
+
+// delete order
+export const deleteBook = book =>
+  del(url.DELETE_BOOK, { headers: { book } });
+
 // get cart data
 export const getCartData = () => get(url.GET_CART_DATA);
 

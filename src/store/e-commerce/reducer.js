@@ -11,6 +11,8 @@ import {
   DELETE_CUSTOMER_FAIL,
   GET_ORDERS_FAIL,
   GET_ORDERS_SUCCESS,
+  GET_BOOKS_FAIL,
+  GET_BOOKS_SUCCESS,
   GET_PRODUCTS_FAIL,
   GET_PRODUCTS_SUCCESS,
   GET_SHOPS_FAIL,
@@ -19,10 +21,16 @@ import {
   GET_PRODUCT_DETAIL_FAIL,
   ADD_ORDER_SUCCESS,
   ADD_ORDER_FAIL,
+  ADD_BOOK_SUCCESS,
+  ADD_BOOK_FAIL,
   UPDATE_ORDER_SUCCESS,
   UPDATE_ORDER_FAIL,
   DELETE_ORDER_SUCCESS,
   DELETE_ORDER_FAIL,
+  UPDATE_BOOK_SUCCESS,
+  UPDATE_BOOK_FAIL,
+  DELETE_BOOK_SUCCESS,
+  DELETE_BOOK_FAIL,
   GET_PRODUCT_COMMENTS_SUCCESS,
   GET_PRODUCT_COMMENTS_FAIL,
   ON_LIKE_COMMENT_SUCCESS,
@@ -35,6 +43,7 @@ const INIT_STATE = {
   products: [],
   product: {},
   orders: [],
+  books:[],
   cartData: {},
   customers: [],
   shops: [],
@@ -122,6 +131,59 @@ const Ecommerce = (state = INIT_STATE, action) => {
         error: action.payload,
       };
 
+      case GET_BOOKS_SUCCESS:
+        return {
+          ...state,
+          books: action.payload,
+        };
+  
+      case GET_BOOKS_FAIL:
+        return {
+          ...state,
+          error: action.payload,
+        };
+  
+      case ADD_BOOK_SUCCESS:
+        return {
+          ...state,
+          books: [...state.books, action.payload],
+        };
+  
+      case ADD_BOOK_FAIL:
+        return {
+          ...state,
+          error: action.payload,
+        };
+  
+      case UPDATE_BOOK_SUCCESS:
+        return {
+          ...state,
+          books: state.books.map(book =>
+            (book.id + '') === (action.payload.id + '')
+              ? { book, ...action.payload }
+              : book
+          ),
+        };
+  
+      case UPDATE_BOOK_FAIL:
+        return {
+          ...state,
+          error: action.payload,
+        };
+  
+      case DELETE_BOOK_SUCCESS:
+        return {
+          ...state,
+          books: state.books.filter(
+            book => book.id !== action.payload
+          ),
+        };
+  
+      case DELETE_BOOK_FAIL:
+        return {
+          ...state,
+          error: action.payload,
+        };
     case GET_CART_DATA_SUCCESS:
       return {
         ...state,

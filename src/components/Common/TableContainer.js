@@ -12,6 +12,7 @@ import {
 import { Table, Row, Col, Button, Input, CardBody } from "reactstrap";
 import { Filter, DefaultColumnFilter } from "./filters";
 import JobListGlobalFilter from "../../components/Common/GlobalSearchFilter";
+import { Link } from "react-router-dom";
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -67,7 +68,9 @@ const TableContainer = ({
   isJobListGlobalFilter,
   isAddOptions,
   isAddUserList,
+  isAddBookList,
   handleOrderClicks,
+  handleBookClicks,
   handleUserClick,
   handleCustomerClick,
   isAddCustList,
@@ -166,7 +169,8 @@ const TableContainer = ({
               </Button>
             </div>
           </Col>
-        )}
+        )}       
+
         {isAddUserList && (
           <Col sm="7">
             <div className="text-sm-end">
@@ -182,6 +186,21 @@ const TableContainer = ({
             </div>
           </Col>
         )}
+             {isAddBookList && (
+          <Col sm="7">
+            <div className="text-sm-end">
+                <Link
+              to="/createbook"
+              className="btn btn-success btn-rounded"
+            >
+              <i className="mdi mdi-plus me-1"  />
+              Add New Book
+            </Link>
+          
+            </div>
+          </Col>
+        )}
+
         {isAddCustList && (
           <Col sm="7">
             <div className="text-sm-end">

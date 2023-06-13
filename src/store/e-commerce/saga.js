@@ -5,12 +5,16 @@ import {
   GET_CART_DATA,
   GET_CUSTOMERS,
   GET_ORDERS,
+  GET_BOOKS,
   GET_PRODUCT_DETAIL,
   GET_PRODUCTS,
   GET_SHOPS,
   ADD_NEW_ORDER,
   DELETE_ORDER,
   UPDATE_ORDER,
+  ADD_NEW_BOOK,
+  DELETE_BOOK,
+  UPDATE_BOOK,
   ADD_NEW_CUSTOMER,
   DELETE_CUSTOMER,
   UPDATE_CUSTOMER,
@@ -27,6 +31,8 @@ import {
   getCustomersSuccess,
   getOrdersFail,
   getOrdersSuccess,
+  getBooksFail,
+  getBooksSuccess,
   getProductDetailFail,
   getProductDetailSuccess,
   getProductsFail,
@@ -39,6 +45,12 @@ import {
   updateOrderFail,
   deleteOrderSuccess,
   deleteOrderFail,
+  addBookFail,
+  addBookSuccess,
+  updateBookSuccess,
+  updateBookFail,
+  deleteBookSuccess,
+  deleteBookFail,
   addCustomerFail,
   addCustomerSuccess,
   updateCustomerSuccess,
@@ -62,12 +74,16 @@ import {
   getCartData,
   getCustomers,
   getOrders,
+  getBooks,
   getProducts,
   getShops,
   getProductDetail,
   addNewOrder,
   updateOrder,
   deleteOrder,
+  addNewBook,
+  updateBook,
+  deleteBook,
   addNewCustomer,
   updateCustomer,
   deleteCustomer,
@@ -102,6 +118,14 @@ function* fetchOrders() {
     yield put(getOrdersSuccess(response));
   } catch (error) {
     yield put(getOrdersFail(error));
+  }
+}
+function* fetchBooks() {
+  try {
+    const response = yield call(getBooks);
+    yield put(getBooksSuccess(response));
+  } catch (error) {
+    yield put(getBooksFail(error));
   }
 }
 
@@ -187,6 +211,35 @@ function* onAddNewOrder({ payload: order }) {
   }
 }
 
+function* onUpdateBook({ payload: book }) {
+  try {
+    const response = yield call(updateBook, book);
+    yield put(updateBookSuccess(response));
+  } catch (error) {
+    yield put(updateBookFail(error));
+  }
+}
+
+function* onDeleteBook({ payload: book }) {
+  try {
+    const response = yield call(deleteBook, book);
+    yield put(deleteBookSuccess(response));
+  } catch (error) {
+    yield put(deleteBookFail(error));
+  }
+}
+
+function* onAddNewBook({ payload: book }) {
+  try {
+    const response = yield call(addNewBook, book);
+    yield put(addBookSuccess(response));
+  } catch (error) {
+    yield put(addBookFail(error));
+  }
+}
+
+
+
 function* getProductComents() {
   try {
     // todo - add product Id to the payload and api
@@ -239,6 +292,7 @@ function* ecommerceSaga() {
   yield takeEvery(GET_PRODUCTS, fetchProducts);
   yield takeEvery(GET_PRODUCT_DETAIL, fetchProductDetail);
   yield takeEvery(GET_ORDERS, fetchOrders);
+  yield takeEvery(GET_BOOKS, fetchBooks);
   yield takeEvery(GET_CART_DATA, fetchCartData);
   yield takeEvery(GET_CUSTOMERS, fetchCustomers);
   yield takeEvery(ADD_NEW_CUSTOMER, onAddNewCustomer);
@@ -248,6 +302,9 @@ function* ecommerceSaga() {
   yield takeEvery(ADD_NEW_ORDER, onAddNewOrder);
   yield takeEvery(UPDATE_ORDER, onUpdateOrder);
   yield takeEvery(DELETE_ORDER, onDeleteOrder);
+  yield takeEvery(ADD_NEW_BOOK, onAddNewBook);
+  yield takeEvery(UPDATE_BOOK, onUpdateBook);
+  yield takeEvery(DELETE_BOOK, onDeleteBook);
   yield takeEvery(GET_PRODUCT_COMMENTS, getProductComents);
   yield takeEvery(ON_LIKE_COMMENT, onLikeComment);
   yield takeEvery(ON_LIKE_REPLY, onLikeReply);

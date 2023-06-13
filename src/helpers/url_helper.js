@@ -43,6 +43,12 @@ export const ADD_NEW_ORDER = "/add/order";
 export const UPDATE_ORDER = "/update/order";
 export const DELETE_ORDER = "/delete/order";
 
+//BOOKS
+export const GET_BOOKS = "/books";
+export const ADD_NEW_BOOK = "/add/book";
+export const UPDATE_BOOK = "/update/book";
+export const DELETE_BOOK = "/delete/book";
+
 //CART DATA
 export const GET_CART_DATA = "/cart";
 

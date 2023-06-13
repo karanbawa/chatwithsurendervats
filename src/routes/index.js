@@ -8,6 +8,8 @@ import UserProfile from "../pages/Authentication/user-profile";
 import EcommerceProducts from "../pages/Ecommerce/EcommerceProducts/index";
 import EcommerceProductDetail from "../pages/Ecommerce/EcommerceProducts/EcommerceProductDetail";
 import EcommerceOrders from "../pages/Ecommerce/EcommerceOrders/index";
+import EcommerceBooks from "../pages/Ecommerce/EcommerceBooks/index";
+import EcommerceAddBook from "../pages/Ecommerce/EcommerceAddBook";
 import EcommerceCustomers from "../pages/Ecommerce/EcommerceCustomers/index";
 import EcommerceCart from "../pages/Ecommerce/EcommerceCart";
 import EcommerceCheckout from "../pages/Ecommerce/EcommerceCheckout";
@@ -116,11 +118,13 @@ const authProtectedRoutes = [
   { path: "/ecommerce-product-detail/:id", component: <EcommerceProductDetail /> },
   { path: "/ecommerce-products", component: <EcommerceProducts /> },
   { path: "/ecommerce-orders", component: <EcommerceOrders /> },
+  { path: "/ecommerce-books", component: <EcommerceBooks /> },
   { path: "/ecommerce-customers", component: <EcommerceCustomers /> },
   { path: "/ecommerce-cart", component: <EcommerceCart /> },
   { path: "/ecommerce-checkout", component: <EcommerceCheckout /> },
   { path: "/ecommerce-shops", component: <EcommerceShops /> },
   { path: "/ecommerce-add-product", component: <EcommerceAddProduct /> },
+  { path: "/createbook", component: <EcommerceAddBook/> },
 
   //Invoices
   { path: "/invoices-list", component: <InvoicesList /> },

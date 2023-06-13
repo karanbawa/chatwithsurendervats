@@ -54,6 +54,32 @@ export const DELETE_ORDER = "DELETE_ORDER"
 export const DELETE_ORDER_SUCCESS = "DELETE_ORDER_SUCCESS"
 export const DELETE_ORDER_FAIL = "DELETE_ORDER_FAIL"
 
+/* BOOKS */
+export const GET_BOOKS = "GET_BOOKS"
+export const GET_BOOKS_SUCCESS = "GET_BOOKS_SUCCESS"
+export const GET_BOOKS_FAIL = "GET_BOOKS_FAIL"
+
+/**
+ * add BOOK
+ */
+export const ADD_NEW_BOOK = "ADD_NEW_BOOK"
+export const ADD_BOOK_SUCCESS = "ADD_BOOK_SUCCESS"
+export const ADD_BOOK_FAIL = "ADD_BOOK_FAIL"
+
+/**
+ * Edit BOOK
+ */
+export const UPDATE_BOOK = "UPDATE_BOOK"
+export const UPDATE_BOOK_SUCCESS = "UPDATE_BOOK_SUCCESS"
+export const UPDATE_BOOK_FAIL = "UPDATE_BOOK_FAIL"
+
+/**
+ * Delete BOOK
+ */
+export const DELETE_BOOK = "DELETE_BOOK"
+export const DELETE_BOOK_SUCCESS = "DELETE_BOOK_SUCCESS"
+export const DELETE_BOOK_FAIL = "DELETE_BOOK_FAIL"
+
 /* CART DATA */
 export const GET_CART_DATA = "GET_CART_DATA"
 export const GET_CART_DATA_SUCCESS = "GET_CART_DATA_SUCCESS"
