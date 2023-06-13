@@ -1,5 +1,6 @@
 //REGISTER
-export const POST_FAKE_REGISTER = "/post-fake-register";
+//export const POST_FAKE_REGISTER = "/post-fake-register";
+export const POST_REGISTER = "/v1/signup/basic";
 
 //LOGIN
 export const POST_FAKE_LOGIN = "/post-fake-login";
