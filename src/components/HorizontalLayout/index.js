@@ -81,10 +81,14 @@ const Layout = (props) => {
       document.getElementById("preloader").style.display = "block";
       document.getElementById("status").style.display = "block";
 
-      setTimeout(function () {
+      const timer = setTimeout(function () {
         document.getElementById("preloader").style.display = "none";
         document.getElementById("status").style.display = "none";
       }, 2500);
+
+      return () => {
+        clearTimeout(timer);
+      };
     } else {
       document.getElementById("preloader").style.display = "none";
       document.getElementById("status").style.display = "none";

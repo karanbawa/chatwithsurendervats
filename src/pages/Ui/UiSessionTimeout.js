@@ -28,7 +28,7 @@ class UiSessionTimeout extends Component {
     this.setState({ timeralert: null })
   }
   main_function() {
-    setTimeout(
+    const timer = setTimeout(
       function () {
         setTimeout(
           function () {
@@ -40,6 +40,10 @@ class UiSessionTimeout extends Component {
       }.bind(this),
       6000
     )
+
+    return () => {
+      clearTimeout(timer);
+    };
   }
   function1() {
     if (window.location.pathname === "/ui-session-timeout") {
