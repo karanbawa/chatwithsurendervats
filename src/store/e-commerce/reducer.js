@@ -1,4 +1,13 @@
 import {
+  GET_COURSE,
+  GET_COURSE_FAIL,
+  GET_COURSE_SUCCESS,
+  ADD_COURSE_FAIL,
+  ADD_COURSE_SUCCESS,
+  UPDATE_COURSE_FAIL,
+  UPDATE_COURSE_SUCCESS,
+  DELETE_COURSE_FAIL,
+  DELETE_COURSE_SUCCESS,
   GET_CART_DATA_FAIL,
   GET_CART_DATA_SUCCESS,
   GET_CUSTOMERS_FAIL,
@@ -40,6 +49,7 @@ const INIT_STATE = {
   shops: [],
   error: {},
   productComments: [],
+  courses: [],
 };
 
 const Ecommerce = (state = INIT_STATE, action) => {
