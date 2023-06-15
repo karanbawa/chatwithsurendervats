@@ -16,4 +16,8 @@ export const ADD_NEW_BOOK = "/createbook";
 export const UPDATE_BOOK = "/update/book";
 export const DELETE_BOOK = "/delete/book";
 
-
+//CUSTOMERS
+export const GET_COURSES = "/courses";
+export const ADD_NEW_COURSE = "/add/course";
+export const UPDATE_COURSE= "/update/course";
+export const DELETE_COURSE = "/delete/course";
