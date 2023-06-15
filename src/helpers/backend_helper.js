@@ -4,8 +4,9 @@ import * as url from "./url_helper";
 
 // Register Method
 const postRegister = data => post(url.POST_REGISTER, data);
-
+const postLogin = data => post(url.POST_LOGIN, data);
 
 export {
-  postRegister
+  postRegister,
+  postLogin
 };
