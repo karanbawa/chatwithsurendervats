@@ -5,8 +5,10 @@ import * as url from "./url_helper";
 // Register Method
 const postRegister = data => post(url.POST_REGISTER, data);
 const postLogin = data => post(url.POST_LOGIN, data);
+const getDiscountList = () => get(url.GET_DISCOUNT);
 
 export {
   postRegister,
-  postLogin
+  postLogin,
+  getDiscountList
 };

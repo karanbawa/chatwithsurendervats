@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment } from "react"
+import PropTypes from "prop-types"
 import {
   useTable,
   useGlobalFilter,
@@ -8,23 +8,23 @@ import {
   useFilters,
   useExpanded,
   usePagination,
-} from "react-table";
-import { Table, Row, Col, Button, Input, CardBody } from "reactstrap";
-import { Filter, DefaultColumnFilter } from "./filters";
-import JobListGlobalFilter from "../../components/Common/GlobalSearchFilter";
+} from "react-table"
+import { Table, Row, Col, Button, Input, CardBody } from "reactstrap"
+import { Filter, DefaultColumnFilter } from "./filters"
+import JobListGlobalFilter from "../../components/Common/GlobalSearchFilter"
 
 // Define a default UI for filtering
 function GlobalFilter({
   preGlobalFilteredRows,
   globalFilter,
   setGlobalFilter,
-  isJobListGlobalFilter
+  isJobListGlobalFilter,
 }) {
-  const count = preGlobalFilteredRows.length;
-  const [value, setValue] = React.useState(globalFilter);
+  const count = preGlobalFilteredRows.length
+  const [value, setValue] = React.useState(globalFilter)
   const onChange = useAsyncDebounce(value => {
-    setGlobalFilter(value || undefined);
-  }, 200);
+    setGlobalFilter(value || undefined)
+  }, 200)
 
   return (
     <React.Fragment>
@@ -37,8 +37,8 @@ function GlobalFilter({
               </span>
               <input
                 onChange={e => {
-                  setValue(e.target.value);
-                  onChange(e.target.value);
+                  setValue(e.target.value)
+                  onChange(e.target.value)
                 }}
                 id="search-bar-0"
                 type="text"
@@ -50,14 +50,10 @@ function GlobalFilter({
             <i className="bx bx-search-alt search-icon"></i>
           </div>
         </div>
-
       </Col>
-      {isJobListGlobalFilter && (
-        <JobListGlobalFilter />
-      )}
-
+      {isJobListGlobalFilter && <JobListGlobalFilter />}
     </React.Fragment>
-  );
+  )
 }
 
 const TableContainer = ({
@@ -66,6 +62,7 @@ const TableContainer = ({
   isGlobalFilter,
   isJobListGlobalFilter,
   isAddOptions,
+  isDiscountAddOptions,
   isAddUserList,
   handleOrderClicks,
   handleUserClick,
@@ -74,7 +71,6 @@ const TableContainer = ({
   customPageSize,
   className,
   customPageSizeOptions,
-
 }) => {
   const {
     getTableProps,
@@ -114,20 +110,20 @@ const TableContainer = ({
     useSortBy,
     useExpanded,
     usePagination
-  );
+  )
 
   const generateSortingIndicator = column => {
-    return column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : "";
-  };
+    return column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""
+  }
 
   const onChangeInSelect = event => {
-    setPageSize(Number(event.target.value));
-  };
+    setPageSize(Number(event.target.value))
+  }
 
   const onChangeInInput = event => {
-    const page = event.target.value ? Number(event.target.value) - 1 : 0;
-    gotoPage(page);
-  };
+    const page = event.target.value ? Number(event.target.value) - 1 : 0
+    gotoPage(page)
+  }
   return (
     <Fragment>
       <Row className="mb-2">
@@ -163,6 +159,21 @@ const TableContainer = ({
               >
                 <i className="mdi mdi-plus me-1" />
                 Add New Order
+              </Button>
+            </div>
+          </Col>
+        )}
+        {isDiscountAddOptions && (
+          <Col sm="7">
+            <div className="text-sm-end">
+              <Button
+                type="button"
+                color="success"
+                className="btn-rounded  mb-2 me-2"
+                //onClick={handleOrderClicks}
+              >
+                <i className="mdi mdi-plus me-1" />
+                Add New Discount Coupon
               </Button>
             </div>
           </Col>
@@ -216,10 +227,17 @@ const TableContainer = ({
               </tr>
             ))}
           </thead>
-
+          {data.length == 0 ?
+          <tbody>
+            <tr>
+              <td colSpan={columns.length} className="text-center">
+                No Records found
+              </td>
+            </tr>
+          </tbody>: 
           <tbody {...getTableBodyProps()}>
             {page.map(row => {
-              prepareRow(row);
+              prepareRow(row)
               return (
                 <Fragment key={row.getRowProps().key}>
                   <tr>
@@ -228,13 +246,14 @@ const TableContainer = ({
                         <td key={cell.id} {...cell.getCellProps()}>
                           {cell.render("Cell")}
                         </td>
-                      );
+                      )
                     })}
                   </tr>
                 </Fragment>
-              );
+              )
             })}
           </tbody>
+          }
         </Table>
       </div>
 
@@ -290,11 +309,11 @@ const TableContainer = ({
         </Col>
       </Row>
     </Fragment>
-  );
-};
+  )
+}
 
 TableContainer.propTypes = {
   preGlobalFilteredRows: PropTypes.any,
-};
+}
 
-export default TableContainer;
+export default TableContainer
