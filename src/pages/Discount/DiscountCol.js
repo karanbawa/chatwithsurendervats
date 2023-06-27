@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import * as moment from "moment"
-import { Badge } from "reactstrap"
 
 const formateDate = (date, format) => {
   const dateFormat = format ? format : "DD MMM Y"
@@ -26,23 +25,35 @@ const DiscountPercentage = cell => {
 
 const AllowRepeat = cell => {
   return (
-    <Badge
-      className={
-        "font-size-12 badge-soft-" +
-        (cell.value === "1"
-          ? "success"
-          : "danger" && cell.value === "0"
-          ? "warning"
-          : "danger")
-      }
-    >
-      {cell.value}
-    </Badge>
+    <div className="form-check form-switch form-switch-md ">
+      {cell.value ? (
+        <input
+          onChange={cell.handleAllowRepeats}
+          type="checkbox"
+          checked
+          className="form-check-input"
+        />
+      ) : (
+        <input
+          onChange={cell.handleAllowRepeats}
+          type="checkbox"
+          className="form-check-input"
+        />
+      )}
+    </div>
   )
 }
-const Status = cell => {
+const Status = ({handleStatuses}) => {
+ // console.log(cell)
   return (
-    <label><input type="checkbox" data-toggle="toggle" data-size="lg" /></label>
+    <div className="form-check form-switch form-switch-md ">
+      <input
+        onChange={handleStatuses}
+        onClick={handleStatuses}
+        type="checkbox"
+        className="form-check-input"
+      />
+    </div>
   )
 }
 export { DiscountCode, DiscountPercentage, Status, AllowRepeat }

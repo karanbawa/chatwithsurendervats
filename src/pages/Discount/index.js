@@ -26,15 +26,18 @@ import { Link } from "react-router-dom"
 
 function Discount() {
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getDiscount())
-  }, [])
-
   const { discounts } = useSelector(state => ({
     discounts: state.discounts.discount,
   }))
+  useEffect(() => {
+    dispatch(getDiscount())
+  }, [dispatch])
+  
   //console.log(discounts)
-
+  const handleAllowRepeat = () => {console.log("ar")};
+  const handleStatus = () => 
+    console.log("st")
+  ;
   const columns = useMemo(() => [
     {
       Header: "Discount Code",
@@ -76,7 +79,11 @@ function Discount() {
       },
       filterable: true,
       Cell: cellProps => {
-        return <AllowRepeat {...cellProps} />
+        const cellData = {
+          ...cellProps,
+          handleAllowRepeats : handleAllowRepeat
+        }
+        return <AllowRepeat {...cellData} />
       },
     },
     {
@@ -90,7 +97,11 @@ function Discount() {
       },
       filterable: true,
       Cell: cellProps => {
-        return <Status {...cellProps} />
+        const cellData = {
+          ...cellProps,
+          handleStatuses : handleStatus
+        }
+        return <Status handleStatuses = {handleStatus}/>
       },
     },
     {
@@ -151,7 +162,7 @@ function Discount() {
                     //handleOrderClicks={handleOrderClicks}
                     customPageSize={10}
                     className="custom-header-css"
-                   />
+                  />
                 </CardBody>
               </Card>
             </Col>
