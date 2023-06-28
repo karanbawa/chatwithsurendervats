@@ -2,6 +2,7 @@ import { all, fork } from "redux-saga/effects";
 
 //public
 import AccountSaga from "./auth/register/saga";
+import courseSaga from "./course/saga";
 import AuthSaga from "./auth/login/saga";
 import ForgetSaga from "./auth/forgetpwd/saga";
 import ProfileSaga from "./auth/profile/saga";
@@ -44,6 +45,7 @@ export default function* rootSaga() {
     fork(dashboardSaasSaga),
     fork(dashboardCryptoSaga),
     fork(dashboardBlogSaga),
-    fork(dashboardJobSaga)
+    fork(dashboardJobSaga),
+    fork(courseSaga)
   ]);
 }

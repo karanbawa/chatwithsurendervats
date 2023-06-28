@@ -4,6 +4,10 @@ import { Navigate } from "react-router-dom";
 // Profile
 import UserProfile from "../pages/Authentication/user-profile";
 
+//COURSE
+
+import AddCourse from '../pages/Course/AddCourse';
+
 // //Ecommerce Pages
 import EcommerceProducts from "../pages/Ecommerce/EcommerceProducts/index";
 import EcommerceProductDetail from "../pages/Ecommerce/EcommerceProducts/EcommerceProductDetail";
@@ -108,6 +112,8 @@ import Pages500 from "../pages/Utility/pages-500";
 
 const authProtectedRoutes = [
   { path: "/dashboard", component: <Dashboard /> },
+  { path: "/add-course", component: <AddCourse /> },
+
 
   // //profile
   { path: "/profile", component: <UserProfile /> },
@@ -209,6 +215,7 @@ const publicRoutes = [
   { path: "/register", component: <Register /> },
   { path: "/logout", component: <Logout /> },
   { path: "/forgot-password", component: <Recoverpw /> },
+  
 
   { path: "/pages-maintenance", component: <PagesMaintenance /> },
   { path: "/pages-comingsoon", component: <PagesComingsoon /> },

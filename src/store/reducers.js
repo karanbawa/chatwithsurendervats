@@ -32,6 +32,7 @@ import projects from "./projects/reducer";
 
 //tasks
 import tasks from "./tasks/reducer";
+import course from "./course/reducer";
 
 //contacts
 import contacts from "./contacts/reducer";
@@ -75,7 +76,8 @@ const rootReducer = combineReducers({
   DashboardSaas,
   DashboardCrypto,
   DashboardBlog,
-  DashboardJob
+  DashboardJob,
+  course
 });
 
 export default rootReducer;

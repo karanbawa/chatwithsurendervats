@@ -1,4 +1,5 @@
 //REGISTER
+export const ADD_COURSE= "v1/api/course/add";
 export const POST_FAKE_REGISTER = "/post-fake-register";
 
 //LOGIN
