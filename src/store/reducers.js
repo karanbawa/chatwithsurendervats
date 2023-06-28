@@ -54,11 +54,9 @@ import DashboardBlog from "./dashboard-blog/reducer";
 //Dasboard job
 import DashboardJob from "./dashboard-jobs/reducer";
 
-
 // Books
 import Books from "./books/reducer";
-
-import { discounts } from "./discount/reducer";
+import discounts from "./discount/reducer";
 
 
 const rootReducer = combineReducers({
@@ -83,7 +81,7 @@ const rootReducer = combineReducers({
   DashboardCrypto,
   DashboardBlog,
   DashboardJob,
-  Books
+  Books,
   discounts
 });
 

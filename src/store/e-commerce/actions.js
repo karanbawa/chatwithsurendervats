@@ -1,6 +1,6 @@
 import {
   GET_COURSE,
-  GET__COURSE_SUCCESS,
+  GET_COURSE_SUCCESS,
   GET_COURSE_FAIL,
   GET_CART_DATA,
   GET_CART_DATA_FAIL,
@@ -174,7 +174,7 @@ export const getCourses = () => ({
   type: GET_COURSE,
 })
 
-export const getCourseSuccess = customers => ({
+export const getCourseSuccess = course => ({
   type: GET_COURSE_SUCCESS,
   payload: course,
 })
@@ -183,12 +183,12 @@ export const getCourseFail = error => ({
   type: GET_COURSE_FAIL,
   payload: error,
 })
-export const addNewCourse = customer => ({
+export const addNewCourse = course => ({
   type: ADD_NEW_COURSE,
   payload: course,
 })
 
-export const addCourseSuccess = customer => ({
+export const addCourseSuccess = course => ({
   type: ADD_COURSE_SUCCESS,
   payload: course,
 })
@@ -198,12 +198,12 @@ export const addCourseFail = error => ({
   payload: error,
 })
 
-export const updateCourse = customer => ({
+export const updateCourse = course => ({
   type: UPDATE_COURSE,
   payload: course,
 })
 
-export const updateCourseSuccess = customer => ({
+export const updateCourseSuccess = course => ({
   type: UPDATE_COURSE_SUCCESS,
   payload: course,
 })
@@ -213,12 +213,14 @@ export const updateCourseFail = error => ({
   payload: error,
 })
 
-export const deleteCourse = customer => ({
+
+
+export const deleteCourse = course => ({
   type: DELETE_COURSE,
   payload: course,
 })
 
-export const deleteCourseSuccess = customer => ({
+export const deleteCourseSuccess = course => ({
   type: DELETE_COURSE_SUCCESS,
   payload: course,
 })
@@ -227,25 +229,6 @@ export const deleteCourseFail = error => ({
   type: DELETE_COURSE_FAIL,
   payload: error,
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const getCustomers = () => ({
   type: GET_CUSTOMERS,

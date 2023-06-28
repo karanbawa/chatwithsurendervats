@@ -25,6 +25,16 @@ const deleteBook = book =>del(url.DELETE_BOOK, { headers: { book } });
 
 const getDiscountList = () => get(url.GET_DISCOUNT);
 
+const getCourses = () => get(url.GET_COURSES);
+
+const addNewCourse = course => post(url.ADD_NEW_COURSE, course);
+
+// update courses
+const updateCourse= course => put(url.UPDATE_COURSE, course);
+
+// delete courses
+const deleteCourse = course =>
+  del(url.DELETE_COURSE, { headers: { course } });
 
 export {
   postRegister,
@@ -39,7 +49,9 @@ export {
   addNewBook,
   updateBook,
   deleteBook,
-  getDiscountList
+  getDiscountList,
+  getCourses,
+  addNewCourse,
+  updateCourse,
+  deleteCourse
 };
-
-

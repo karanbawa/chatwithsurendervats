@@ -5,7 +5,7 @@ const initialState = {
   totalDiscounts:0,
   error:""
 }
-export const discounts = (state = initialState, action) => {
+const discounts = (state = initialState, action) => {
   switch (action.type) {
     case GETDISCOUNTSUCCESS:
     return{
@@ -13,7 +13,6 @@ export const discounts = (state = initialState, action) => {
         discount: action.payload.discount,
         totalDiscounts:action.payload.totalDiscounts
       }
-      break;
       case GETDISCOUNTFALIURE:
         return{
           ...state,
@@ -21,6 +20,7 @@ export const discounts = (state = initialState, action) => {
         }
     default:
       return state
-      break;
   }
 }
+
+export default discounts;

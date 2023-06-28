@@ -47,7 +47,7 @@ export default function* rootSaga() {
     fork(dashboardCryptoSaga),
     fork(dashboardBlogSaga),
     fork(dashboardJobSaga),
-    fork(booksSaga)
+    fork(booksSaga),
     fork(discountSaga)
   ]);
 }

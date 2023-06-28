@@ -85,10 +85,8 @@ function Books() {
 
   // GET BOOKS 
   useEffect(() => {
-    if (books && !books.length) {
       dispatch(onGetBooks());
-    }
-  }, [dispatch, books]);
+  }, [dispatch]);
 
   // GET BOOKS LIST
   useEffect(() => {
