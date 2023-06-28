@@ -135,7 +135,7 @@ const Dashboard = props => {
                           </div>
                           <div className="flex-grow-1">
                             <h4 className="fw-medium text-center">
-                            Total Events Subscriptions
+                            Total Subscriptions
                             </h4>
                           </div>
                           <div>  
@@ -189,7 +189,7 @@ const Dashboard = props => {
                           </div>
                           <div className="flex-grow-1">
                             <h4 className="fw-medium text-center">
-                            Total Video Hosted
+                            Total Videos
                             </h4>
                           </div>
                           <div>  
@@ -218,7 +218,7 @@ const Dashboard = props => {
                           </div>
                           <div className="flex-grow-1">
                             <h4 className="fw-medium text-center">
-                            Total Revenue of Trainer
+                            Total Revenue
                             </h4>
                           </div>
                           <div>  
@@ -272,7 +272,7 @@ const Dashboard = props => {
                           </div>
                           <div className="flex-grow-1">
                             <h4 className="fw-medium text-center">
-                            Earning
+                            Total Earning
                             </h4>
                           </div>
                           <div>  

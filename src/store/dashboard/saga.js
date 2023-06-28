@@ -39,7 +39,7 @@ function* fetchSubcriptionsCountFromAPI() {
     try
     {
         const response = yield call(getSubcriptions);
-        yield put(getSubscriptionsSuccess(response));
+        yield put(getSubscriptionsSuccess(response.data));
     }
     catch(error)
     {
@@ -51,7 +51,7 @@ function* fetchSubcriptionsCountFromAPI() {
     try
     {
         const response = yield call(getStudents);
-        yield put(getStudentsSuccess(response));
+        yield put(getStudentsSuccess(response.data));
     }
     catch(error)
     {
@@ -63,7 +63,7 @@ function* fetchSubcriptionsCountFromAPI() {
     try
     {
         const response = yield call(getVideos);
-        yield put(getVideosSuccess(response));
+        yield put(getVideosSuccess(response.data));
     }
     catch(error)
     {
@@ -75,7 +75,7 @@ function* fetchSubcriptionsCountFromAPI() {
     try
     {
         const response = yield call(getRevenue);
-        yield put(getRevenueSuccess(response));
+        yield put(getRevenueSuccess(response.data));
     }
     catch(error)
     {
@@ -87,7 +87,7 @@ function* fetchSubcriptionsCountFromAPI() {
     try
     {
         const response = yield call(getRatings);
-        yield put(getRatingsSuccess(response));
+        yield put(getRatingsSuccess(response.data));
     }
     catch(error)
     {
@@ -99,7 +99,7 @@ function* fetchSubcriptionsCountFromAPI() {
     try
     {
         const response = yield call(getEarnings);
-        yield put(getEarningsSuccess(response));
+        yield put(getEarningsSuccess(response.data));
     }
     catch(error)
     {

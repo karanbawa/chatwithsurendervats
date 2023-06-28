@@ -45,7 +45,7 @@ const Dashboard = (state = INIT_STATE, action) => {
           case GET_VIDEOS_SUCCESS:
             return {
               ...state,
-              videos: action.payload.totalVideos,
+              videos: action.payload.totalVideos, 
               videosError: null,
             };
           case GET_REVENUE_SUCCESS:

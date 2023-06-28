@@ -23,20 +23,23 @@ const updateBook = book => put(url.UPDATE_BOOK, book);
 // DELETE BOOK
 const deleteBook = book =>del(url.DELETE_BOOK, { headers: { book } });
 
+const getDiscountList = () => get(url.GET_DISCOUNT);
+
 
 export {
   postRegister,
+  postLogin,
   getSubcriptions,
   getStudents,
   getVideos,
   getRevenue,
   getRatings,
   getEarnings,
-  postLogin,
   getBooks,
   addNewBook,
   updateBook,
-  deleteBook
+  deleteBook,
+  getDiscountList
 };
 
 
