@@ -5,14 +5,12 @@ import { LOGIN_USER, LOGOUT_USER, SOCIAL_LOGIN } from "./actionTypes";
 import { apiError, loginSuccess, logoutUserSuccess } from "./actions";
 import { showToastError , showToastSuccess } from "helpers/toastBuilder";
 //Include Both Helper File with needed methods
-import { getFirebaseBackend } from "../../../helpers/firebase_helper";
-
+import { getFirebaseBackend } from "../../../helpers/firebase_helper"
 import { postLogin } from "helpers/backend_helper";
 const fireBaseBackend = getFirebaseBackend();
 
 function* loginUser({ payload: { user, history } }) {
   try {
-    if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
       const response = yield call(postLogin, {
         email: user.email,
         password: user.password,
@@ -22,7 +20,6 @@ function* loginUser({ payload: { user, history } }) {
         showToastSuccess("Login is Successfull","Success")
       }
       yield put(loginSuccess(response));
-    }
     history('/dashboard');
   } catch (error) {
     showToastError("Email and Password does not match","Error")
