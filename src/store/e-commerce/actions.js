@@ -230,25 +230,6 @@ export const deleteCourseFail = error => ({
   payload: error,
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getCustomers = () => ({
   type: GET_CUSTOMERS,
 })

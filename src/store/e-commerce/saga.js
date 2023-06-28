@@ -119,7 +119,6 @@ function* fetchOrders() {
   }
 }
 
-
 function* fetchCourse() {
   try {
     const response = yield call(getCourses);
@@ -128,7 +127,6 @@ function* fetchCourse() {
     yield put(getCourseFail(error));
   }
 }
-
 
 function* fetchCartData() {
   try {
@@ -212,8 +210,6 @@ function* onAddNewOrder({ payload: order }) {
   }
 }
 
-
-
 function* onUpdateCourse({ payload: course}) {
   try {
     const response = yield call(updateCourse, course);
@@ -240,10 +236,6 @@ function* onAddNewCourse({ payload: course }) {
     yield put(addCourseFail(error));
   }
 }
-
-
-
-
 
 function* getProductComents() {
   try {

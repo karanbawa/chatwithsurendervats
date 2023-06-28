@@ -118,19 +118,6 @@ export const DELETE_COURSE = "DELETE_CUSTOMER"
 export const DELETE_COURSE_SUCCESS = "DELETE_CUSTOMER_SUCCESS"
 export const DELETE_COURSE_FAIL = "DELETE_CUSTOMER_FAIL"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* SHOPS */
 export const GET_SHOPS = "GET_SHOPS"
 export const GET_SHOPS_SUCCESS = "GET_SHOPS_SUCCESS"
