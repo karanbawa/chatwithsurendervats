@@ -16,3 +16,9 @@ export const GET_RATINGS = "/v1/api/dashboard/overallratings";
 
 export const GET_EARNINGS = "/v1/api/dashboard/totalEarnings";
 
+//CUSTOMERS
+
+export const GET_COURSES = "/v1/api/course/list";
+export const ADD_NEW_COURSE = "/add/course";
+export const UPDATE_COURSE= "/update/course";
+export const DELETE_COURSE = "/delete/course";

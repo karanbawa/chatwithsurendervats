@@ -17,6 +17,17 @@ const getRevenue = () => get(url.GET_REVENUE);
 const getRatings = () => get(url.GET_RATINGS);
 const getEarnings = () => get(url.GET_EARNINGS);
 
+const getCourses = () => get(url.GET_COURSES);
+
+const addNewCourse = course => post(url.ADD_NEW_COURSE, course);
+
+// update courses
+const updateCourse= course => put(url.UPDATE_COURSE, course);
+
+// delete courses
+const deleteCourse = course =>
+  del(url.DELETE_COURSE, { headers: { course } });
+
 export {
   postRegister,
   getSubcriptions,
@@ -26,6 +37,9 @@ export {
   getRatings,
   getEarnings,
   postLogin,
-  getDiscountList
+  getDiscountList,
+  getCourses,
+  addNewCourse,
+  updateCourse,
+  deleteCourse
 };
-

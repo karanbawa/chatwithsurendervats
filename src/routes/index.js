@@ -13,7 +13,7 @@ import EcommerceCart from "../pages/Ecommerce/EcommerceCart"
 import EcommerceCheckout from "../pages/Ecommerce/EcommerceCheckout"
 import EcommerceShops from "../pages/Ecommerce/EcommerceShops/index"
 import EcommerceAddProduct from "../pages/Ecommerce/EcommerceAddProduct"
-
+import EcommerceCourses from "../pages/Ecommerce/EcommerceCourses/index";
 //Invoices
 import InvoicesList from "../pages/Invoices/invoices-list"
 import InvoiceDetail from "../pages/Invoices/invoices-detail"
@@ -105,9 +105,8 @@ import PagesFaqs from "../pages/Utility/pages-faqs"
 import PagesPricing from "../pages/Utility/pages-pricing"
 import Pages404 from "../pages/Utility/pages-404"
 import Pages500 from "../pages/Utility/pages-500"
+import Discount from "pages/Discount"
 
-import Discount from "pages/Discount/Discount"
-import { components } from "react-select"
 
 const authProtectedRoutes = [
   { path: "/dashboard", component: <Dashboard /> },
@@ -127,6 +126,8 @@ const authProtectedRoutes = [
   { path: "/ecommerce-checkout", component: <EcommerceCheckout /> },
   { path: "/ecommerce-shops", component: <EcommerceShops /> },
   { path: "/ecommerce-add-product", component: <EcommerceAddProduct /> },
+  { path: "/ecommerce-course", component: <EcommerceCourses/> },
+  
 
   //Invoices
   { path: "/invoices-list", component: <InvoicesList /> },

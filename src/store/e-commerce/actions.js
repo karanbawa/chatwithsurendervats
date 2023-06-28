@@ -1,10 +1,16 @@
 import {
+  GET_COURSE,
+  GET_COURSE_SUCCESS,
+  GET_COURSE_FAIL,
   GET_CART_DATA,
   GET_CART_DATA_FAIL,
   GET_CART_DATA_SUCCESS,
   GET_ORDERS,
   GET_ORDERS_FAIL,
   GET_ORDERS_SUCCESS,
+  ADD_NEW_COURSE,
+  ADD_COURSE_SUCCESS,
+  ADD_COURSE_FAIL,
   ADD_NEW_ORDER,
   ADD_ORDER_SUCCESS,
   ADD_ORDER_FAIL,
@@ -23,9 +29,15 @@ import {
   ADD_NEW_CUSTOMER,
   ADD_CUSTOMER_SUCCESS,
   ADD_CUSTOMER_FAIL,
+  UPDATE_COURSE,
+  UPDATE_COURSE_SUCCESS,
+  UPDATE_COURSE_FAIL,
   UPDATE_CUSTOMER,
   UPDATE_CUSTOMER_SUCCESS,
   UPDATE_CUSTOMER_FAIL,
+  DELETE_COURSE,
+  DELETE_COURSE_FAIL,
+  DELETE_COURSE_SUCCESS,
   DELETE_CUSTOMER,
   DELETE_CUSTOMER_SUCCESS,
   DELETE_CUSTOMER_FAIL,
@@ -151,6 +163,70 @@ export const getCartDataSuccess = cartData => ({
 
 export const getCartDataFail = error => ({
   type: GET_CART_DATA_FAIL,
+  payload: error,
+})
+
+
+
+
+
+export const getCourses = () => ({
+  type: GET_COURSE,
+})
+
+export const getCourseSuccess = course => ({
+  type: GET_COURSE_SUCCESS,
+  payload: course,
+})
+
+export const getCourseFail = error => ({
+  type: GET_COURSE_FAIL,
+  payload: error,
+})
+export const addNewCourse = course => ({
+  type: ADD_NEW_COURSE,
+  payload: course,
+})
+
+export const addCourseSuccess = course => ({
+  type: ADD_COURSE_SUCCESS,
+  payload: course,
+})
+
+export const addCourseFail = error => ({
+  type: ADD_COURSE_FAIL,
+  payload: error,
+})
+
+export const updateCourse = course => ({
+  type: UPDATE_COURSE,
+  payload: course,
+})
+
+export const updateCourseSuccess = course => ({
+  type: UPDATE_COURSE_SUCCESS,
+  payload: course,
+})
+
+export const updateCourseFail = error => ({
+  type: UPDATE_COURSE_FAIL,
+  payload: error,
+})
+
+
+
+export const deleteCourse = course => ({
+  type: DELETE_COURSE,
+  payload: course,
+})
+
+export const deleteCourseSuccess = course => ({
+  type: DELETE_COURSE_SUCCESS,
+  payload: course,
+})
+
+export const deleteCourseFail = error => ({
+  type: DELETE_COURSE_FAIL,
   payload: error,
 })
 
