@@ -4,6 +4,7 @@ import * as url from "./url_helper";
 
 // Register Method
 const postRegister = data => post(url.POST_REGISTER, data);
+const postLogin = data => post(url.POST_LOGIN, data);
 
 // DASHBOARD ITEMS COUNT
 const getSubcriptions = () => get(url.GET_SUBSCRIPTIONS);
@@ -13,6 +14,16 @@ const getRevenue = () => get(url.GET_REVENUE);
 const getRatings = () => get(url.GET_RATINGS);
 const getEarnings = () => get(url.GET_EARNINGS);
 
+// GET BOOKS
+const getBooks = () => get(url.GET_BOOKS);
+// ADD NEW BOOK
+const addNewBook = book => post(url.ADD_NEW_BOOK, book);
+// UPDATE BOOK
+const updateBook = book => put(url.UPDATE_BOOK, book);
+// DELETE BOOK
+const deleteBook = book =>del(url.DELETE_BOOK, { headers: { book } });
+
+
 export {
   postRegister,
   getSubcriptions,
@@ -20,6 +31,12 @@ export {
   getVideos,
   getRevenue,
   getRatings,
-  getEarnings
+  getEarnings,
+  postLogin,
+  getBooks,
+  addNewBook,
+  updateBook,
+  deleteBook
 };
+
 

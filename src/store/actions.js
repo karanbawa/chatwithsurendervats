@@ -51,3 +51,6 @@ export * from "./dashboard-blog/actions";
 //dashboard-jobs
 export * from "./dashboard-jobs/actions";
 
+// books
+export * from "./books/actions";
+

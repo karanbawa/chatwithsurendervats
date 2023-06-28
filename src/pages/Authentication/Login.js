@@ -31,12 +31,15 @@ const Login = props => {
     enableReinitialize: true,
 
     initialValues: {
-      email: "admin@scrollit.com" || '',
-      password: "123456" || '',
+      email: "",
+      password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Please Enter Your Email"),
-      password: Yup.string().required("Please Enter Your Password"),
+      email: Yup.string().email().required("Please Enter Your Email"),
+      password: Yup.string().matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+        'Password must contain at least one uppercase letter, one lowercase letter, one digit, and one symbol'
+      ).required("Please Enter Your Password"),
     }),
     onSubmit: (values) => {
       dispatch(loginUser(values, props.router.navigate));
@@ -103,10 +106,10 @@ const Login = props => {
                         return false;
                       }}
                     >
-                      {error ? <Alert color="danger">{error}</Alert> : null}
+                      {/*error ? <Alert color="danger">{error}</Alert> : null*/}
 
                       <div className="mb-3">
-                        <Label className="form-label">Email</Label>
+                        <Label className="form-label">Email<span className="text-danger"> *</span></Label>
                         <Input
                           name="email"
                           className="form-control"
@@ -125,7 +128,7 @@ const Login = props => {
                       </div>
 
                       <div className="mb-3">
-                        <Label className="form-label">Password</Label>
+                        <Label className="form-label">Password<span className="text-danger"> *</span></Label>
                         <Input
                           name="password"
                           value={validation.values.password || ""}

@@ -66,8 +66,10 @@ const TableContainer = ({
   isGlobalFilter,
   isJobListGlobalFilter,
   isAddOptions,
+  isAddBook,
   isAddUserList,
   handleOrderClicks,
+  handleBookClicks,
   handleUserClick,
   handleCustomerClick,
   isAddCustList,
@@ -163,6 +165,21 @@ const TableContainer = ({
               >
                 <i className="mdi mdi-plus me-1" />
                 Add New Order
+              </Button>
+            </div>
+          </Col>
+        )}
+        {isAddBook && (
+          <Col sm="7">
+            <div className="text-sm-end">
+              <Button
+                type="button"
+                color="success"
+                className="btn-rounded  mb-2 me-2"
+                onClick={handleBookClicks}
+              >
+                <i className="mdi mdi-plus me-1" />
+                Add New Book
               </Button>
             </div>
           </Col>
