@@ -59,9 +59,13 @@ const UserProfile = () => {
         setemail(obj.email);
         setidx(obj.uid);
       }
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         dispatch(resetProfileFlag());
       }, 3000);
+
+      return () => {
+        clearTimeout(timer);
+      };
     }
   }, [dispatch, success]);
 
