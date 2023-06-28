@@ -272,7 +272,7 @@ const Dashboard = props => {
                           </div>
                           <div className="flex-grow-1">
                             <h4 className="fw-medium text-center">
-                            Total Earning
+                            Total Earnings
                             </h4>
                           </div>
                           <div>  
