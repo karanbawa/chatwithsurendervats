@@ -132,6 +132,60 @@ const Ecommerce = (state = INIT_STATE, action) => {
         error: action.payload,
       };
 
+        case GET_COURSE_SUCCESS:
+        return {
+          ...state,
+          courses: action.payload.courses,
+        };
+  
+      case GET_COURSE_FAIL:
+        return {
+          ...state,
+          error: action.payload,
+        };
+  
+      case ADD_COURSE_SUCCESS:
+        return {
+          ...state,
+          courses: [...state.courses, action.payload],
+        };
+  
+      case ADD_COURSE_FAIL:
+        return {
+          ...state,
+          error: action.payload,
+        };
+  
+      case UPDATE_COURSE_SUCCESS:
+        return {
+          ...state,
+          courses: state.courses.map(courses =>
+            (courses.id + '') === (action.payload.id + '')
+              ? { courses, ...action.payload }
+              : courses
+          ),
+        };
+  
+      case UPDATE_COURSE_FAIL:
+        return {
+          ...state,
+          error: action.payload,
+        };
+  
+      case DELETE_COURSE_SUCCESS:
+        return {
+          ...state,
+          courses: state.courses.filter(
+            courses => courses.id !== action.payload
+          ),
+        };
+  
+      case DELETE_COURSE_FAIL:
+        return {
+          ...state,
+          error: action.payload,
+        };
+
     case GET_CART_DATA_SUCCESS:
       return {
         ...state,

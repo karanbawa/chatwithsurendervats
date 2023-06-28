@@ -61,12 +61,14 @@ const TableContainer = ({
   data,
   isGlobalFilter,
   isJobListGlobalFilter,
+  isAddCourseList,
   isAddOptions,
   isDiscountAddOptions,
   isAddUserList,
   handleOrderClicks,
   handleUserClick,
   handleCustomerClick,
+  handleCourseClicks,
   isAddCustList,
   customPageSize,
   className,
@@ -163,6 +165,23 @@ const TableContainer = ({
             </div>
           </Col>
         )}
+
+     {isAddCourseList && (
+          <Col sm="7">
+            <div className="text-sm-end">
+              <Button
+                type="button"
+                color="success"
+                className="btn-rounded mb-2 me-2"
+                onClick={handleCourseClicks}
+              >
+                <i className="mdi mdi-plus me-1" />
+                Add New Course
+              </Button>
+            </div>
+          </Col>
+        )}
+
         {isDiscountAddOptions && (
           <Col sm="7">
             <div className="text-sm-end">
@@ -178,6 +197,7 @@ const TableContainer = ({
             </div>
           </Col>
         )}
+        
         {isAddUserList && (
           <Col sm="7">
             <div className="text-sm-end">

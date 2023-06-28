@@ -105,9 +105,7 @@ import PagesFaqs from "../pages/Utility/pages-faqs"
 import PagesPricing from "../pages/Utility/pages-pricing"
 import Pages404 from "../pages/Utility/pages-404"
 import Pages500 from "../pages/Utility/pages-500"
-
-import Discount from "pages/Discount/Discount"
-import { components } from "react-select"
+import Discount from "pages/Discount"
 
 
 const authProtectedRoutes = [

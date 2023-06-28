@@ -1,37 +1,28 @@
 import React, { useEffect, useMemo, useState } from "react";
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+
+import { Link, useNavigate } from "react-router-dom";
 import { isEmpty } from "lodash";
-import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import TableContainer from '../../../components/Common/TableContainer';
+
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
 //import components
-import Breadcrumbs from '../../../components/Common/Breadcrumb';
-import DeleteModal from '../../../components/Common/DeleteModal';
+import Breadcrumbs from "components/Common/Breadcrumb";
 
 import {
   getCourses as onGetCourses,
   addNewCourse as onAddNewCourse,
   updateCourse as onUpdateCourse,
   deleteCourse as onDeleteCourse,
-} from "store/actions";
+} from "store/actions";  
 
-import {
-  
-  CourseName,
-  CourseCategory,  
-  CourseStatus
-}
-  from "./EcommerceCourseCol";
+import { CourseName, CourseCategory, CourseStatus } from "./EcommerceCourseCol"
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
 
-
 import {
-  Button,
   Col,
   Row,
   UncontrolledTooltip,
@@ -45,18 +36,20 @@ import {
   Card,
   CardBody,
 } from "reactstrap";
+import TableContainer from "components/Common/TableContainer";
+import DeleteModal from "components/Common/DeleteModal";
 
 function EcommerceCourses() {
-
   //meta title
-  document.title = "Courses | TWT -Train With Trainer";
+  document.title = "Course | TWT -Train With Trainer";
+  const history = useNavigate();
 
   const [modal, setModal] = useState(false);
   const [modal1, setModal1] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
-  const [CourseList, setCourseList] = useState([]);
-  const [Course, setCourse] = useState(null);
+  const [courseList, setCourseList] = useState([]);
+  const [course, setCourse] = useState(null);
 
   // validation
   const validation = useFormik({
@@ -64,38 +57,28 @@ function EcommerceCourses() {
     enableReinitialize: true,
 
     initialValues: {
-      
-      CourseName: (Course && Course.CourseName) || '',
-      CourseCategory:(Course && Course.CourseCategory) || '',
-   
-      CourseStatus: (Course && Course.CourseStatus) || 'Pending',
-      
+      CourseName: (course && course.CourseName) || "",
+      CourseCategory: (course && course.CourseCategory) || "",
+
+      CourseStatus: (course && course.CourseStatus) || "Pending",
     },
     validationSchema: Yup.object({
-   
       CourseName: Yup.string().required("Please Enter Your Course Name"),
-      
+
       CourseCategory: Yup.string().required("Please Enter Your Course category"),
 
-   
       CourseStatus: Yup.string().required("Please Enter Your Course Status"),
-    
-      
     }),
 
-
-    
-    onSubmit: (values) => {
+    onSubmit: values => {
       if (isEdit) {
         const updateCourse = {
           // id: Course ? Course.id : 0,
-          
+
           CourseName: values.CourseName,
-          CourseCategory:values.CourseCategory,
-          
+          CourseCategory: values.CourseCategory,
+
           CourseStatus: values.CourseStatus,
-          
-          
         };
         // update Course
         dispatch(onUpdateCourse(updateCourse));
@@ -103,12 +86,11 @@ function EcommerceCourses() {
       } else {
         const newCourse = {
           // id: Math.floor(Math.random() * (30 - 20)) + 20,
-          
+
           CourseName: values["CourseName"],
-          CourseCategory:values["CourseCategory"],
-        
+          CourseCategory: values["CourseCategory"],
+
           CourseStatus: values["CourseStatus"],
-          
         };
         // save new Course
         dispatch(onAddNewCourse(newCourse));
@@ -117,31 +99,47 @@ function EcommerceCourses() {
       toggle();
     },
   });
+  const handleCustomerClick = arg => {
+    const course = arg;
 
+    setCourse({
+      id: course.id,
+      username: course.username,
+      phone: course.phone,
+      email: course.email,
+
+      rating: course.rating,
+      walletBalance: course.walletBalance,
+      joiningDate: course.joiningDate,
+    });
+
+    setIsEdit(true);
+    toggle();
+  };
 
   const toggleViewModal = () => setModal1(!modal1);
 
   const dispatch = useDispatch();
-  const { Courses } = useSelector(state => ({
-    Courses: state.ecommerce.courses,
+  const { courses } = useSelector(state => ({
+    courses: state.ecommerce.courses,
   }));
 
   useEffect(() => {
-    if (Courses && !Courses.length) {
-      dispatch(onGetCourses());
-    }
-  }, [dispatch, Courses]);
+    // if (courses && !courses.length) {
+    dispatch(onGetCourses());
+    // }
+  }, [dispatch]);
+
+  useEffect(() => { 
+    setCourseList(courses);
+  }, [courses]);
 
   useEffect(() => {
-    setCourseList(Courses);
-  }, [Courses]);
-
-  useEffect(() => {
-    if (!isEmpty(Courses) && !!isEdit) {
-      setCourseList(Courses);
+    if (!isEmpty(courses) && !!isEdit) {
+      setCourseList(courses);
       setIsEdit(false);
     }
-  }, [Courses]);
+  }, [courses]);
 
   const toggle = () => {
     if (modal) {
@@ -153,15 +151,14 @@ function EcommerceCourses() {
   };
 
   const handleCourseClick = arg => {
-    const Course = arg;
+    const course = arg;
     setCourse({
-      id: Course.id,
-  
-      CourseName: Course.CourseName,
-      CourseCategory:Course.CourseCategory,
-   
-      CourseStatus: Course.CourseStatus,
- 
+      id: course.id,
+
+      CourseName: course.CourseName,
+      CourseCategory: course.CourseCategory,
+
+      CourseStatus: course.CourseStatus,
     });
 
     setIsEdit(true);
@@ -169,62 +166,60 @@ function EcommerceCourses() {
     toggle();
   };
 
-
   //delete Course
   const [deleteModal, setDeleteModal] = useState(false);
 
-  const onClickDelete = (Course) => {
-    setCourse(Course);
+  const onClickDelete = course => {
+    setCourse(course);
     setDeleteModal(true);
   };
 
   const handleDeleteCourse = () => {
-    if (Course && Course.id) {
-      dispatch(onDeleteCourse(Course.id));
+    if (course && course.id) {
+      dispatch(onDeleteCourse(course.id));
       setDeleteModal(false);
     }
   };
   const handleCourseClicks = () => {
     setCourseList("");
     setIsEdit(false);
-    toggle();
+    history("/Course");
+    // return <Link to="/Course"></Link>;
   };
 
   const columns = useMemo(
     () => [
-      
       {
-        Header: 'Course Name',
-        accessor: 'CourseName',
+        Header: "Course Name",
+        accessor: "name",
         filterable: true,
-        Cell: (cellProps) => {
+        Cell: cellProps => {
           return <CourseName {...cellProps} />;
-        }
+        },
       },
       {
-        Header: 'Course Category',
-        accessor: 'CourseCategory',
+        Header: "Course Category",
+        accessor: "category",
         filterable: true,
-        Cell: (cellProps) => {
+        Cell: cellProps => {
           return <CourseCategory {...cellProps} />;
-        }
+        },
       },
- 
+
       {
-        Header: 'Course Status',
-        accessor: 'CourseStatus',
+        Header: "Course Status",
+        accessor: "status",
         filterable: true,
-        Cell: (cellProps) => {
+        Cell: cellProps => {
           return <CourseStatus {...cellProps} />;
-        }
+        },
       },
-   
-    
+
       {
-        Header: 'Action',
-        accessor: 'action',
+        Header: "Action",
+        accessor: "action",
         disableFilters: true,
-        Cell: (cellProps) => {
+        Cell: cellProps => {
           return (
             <div className="d-flex gap-3">
               <Link
@@ -255,7 +250,7 @@ function EcommerceCourses() {
               </Link>
             </div>
           );
-        }
+        },
       },
     ],
     []
@@ -263,7 +258,7 @@ function EcommerceCourses() {
 
   return (
     <React.Fragment>
-     {/* <EcommerceCoursesModal isOpen={modal1} toggle={toggleViewModal} /> */}
+      {/* <CourseablesModal isOpen={modal1} toggle={toggleViewModal} /> */}
       <DeleteModal
         show={deleteModal}
         onDeleteClick={handleDeleteCourse}
@@ -276,12 +271,12 @@ function EcommerceCourses() {
             <Col xs="12">
               <Card>
                 <CardBody>
-                  {console.log(columns, Courses, 'abc')}
+                  {/* {console.log(columns, courses, "abc")} */}
                   <TableContainer
                     columns={columns}
-                    data={[...Courses]}
-                    isGlobalFilter={true}                    
-                    isAddCourseList={true}                  
+                    data={[...courses]}
+                    isGlobalFilter={true}
+                    isAddCourseList={true}
                     handleCourseClicks={handleCourseClicks}
                     customPageSize={10}
                   />
@@ -295,15 +290,14 @@ function EcommerceCourses() {
             </ModalHeader>
             <ModalBody>
               <Form
-                onSubmit={(e) => {
-                  e.preventDefault();
+                onSubmit={e => {
+                  e.prCourseDefault();
                   validation.handleSubmit();
                   return false;
                 }}
               >
                 <Row>
                   <Col className="col-12">
-                  
                     <div className="mb-3">
                       <Label className="form-label">Course Name</Label>
                       <Input
@@ -317,11 +311,17 @@ function EcommerceCourses() {
                         onBlur={validation.handleBlur}
                         value={validation.values.CourseName || ""}
                         invalid={
-                          validation.touched.CourseName && validation.errors.CourseName ? true : false
+                          validation.touched.CourseName &&
+                          validation.errors.CourseName
+                            ? true
+                            : false
                         }
                       />
-                      {validation.touched.CourseName && validation.errors.CourseName ? (
-                        <FormFeedback type="invalid">{validation.errors.CourseName}</FormFeedback>
+                      {validation.touched.CourseName &&
+                      validation.errors.CourseName ? (
+                        <FormFeedback type="invalid">
+                          {validation.errors.CourseName}
+                        </FormFeedback>
                       ) : null}
                     </div>
                     <div className="mb-3">
@@ -337,15 +337,20 @@ function EcommerceCourses() {
                         onBlur={validation.handleBlur}
                         value={validation.values.CourseCategory || ""}
                         invalid={
-                          validation.touched.CourseCategory && validation.errors.CourseCategory ? true : false
+                          validation.touched.CourseCategory &&
+                          validation.errors.CourseCategory
+                            ? true
+                            : false
                         }
                       />
-                      {validation.touched.CourseCategory && validation.errors.CourseCategory ? (
-                        <FormFeedback type="invalid">{validation.errors.CourseCategory}</FormFeedback>
+                      {validation.touched.CourseCategory &&
+                      validation.errors.CourseCategory ? (
+                        <FormFeedback type="invalid">
+                          {validation.errors.CourseCategory}
+                        </FormFeedback>
                       ) : null}
                     </div>
-                
-                  
+
                     <div className="mb-3">
                       <Label className="form-label">Course Status</Label>
                       <Input
@@ -354,21 +359,20 @@ function EcommerceCourses() {
                         className="form-select"
                         onChange={validation.handleChange}
                         onBlur={validation.handleBlur}
-                        value={
-                          validation.values.CourseStatus || ""
-                        }
+                        value={validation.values.CourseStatus || ""}
                       >
                         <option>Pending</option>
                         <option>Active</option>
                         <option>Draft</option>
                         <option>Inactive</option>
                       </Input>
-                      {validation.touched.CourseStatus && validation.errors.CourseStatus ? (
-                        <FormFeedback type="invalid">{validation.errors.CourseStatus}</FormFeedback>
+                      {validation.touched.CourseStatus &&
+                      validation.errors.CourseStatus ? (
+                        <FormFeedback type="invalid">
+                          {validation.errors.CourseStatus}
+                        </FormFeedback>
                       ) : null}
                     </div>
-                   
-                    
                   </Col>
                 </Row>
                 <Row>
@@ -393,8 +397,6 @@ function EcommerceCourses() {
 }
 EcommerceCourses.propTypes = {
   preGlobalFilteredRows: PropTypes.any,
-
 };
-
 
 export default EcommerceCourses;

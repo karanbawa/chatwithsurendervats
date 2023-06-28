@@ -8,6 +8,10 @@ import {
   GET_PRODUCT_DETAIL,
   GET_PRODUCTS,
   GET_SHOPS,
+  GET_COURSE,
+  ADD_NEW_COURSE,
+  DELETE_COURSE,
+  UPDATE_COURSE,
   ADD_NEW_ORDER,
   DELETE_ORDER,
   UPDATE_ORDER,
@@ -27,6 +31,14 @@ import {
   getCustomersSuccess,
   getOrdersFail,
   getOrdersSuccess,
+  getCourseFail,
+  getCourseSuccess,
+  addCourseFail,
+  addCourseSuccess,
+  updateCourseSuccess,
+  updateCourseFail,
+  deleteCourseSuccess,
+  deleteCourseFail,
   getProductDetailFail,
   getProductDetailSuccess,
   getProductsFail,
@@ -59,6 +71,7 @@ import {
 
 //Include Both Helper File with needed methods
 import {
+  // getCourses,
   getCartData,
   getCustomers,
   getOrders,
@@ -77,6 +90,7 @@ import {
   onAddReply as onAddReplyApi,
   onAddComment as onAddCommentApi,
 } from "helpers/fakebackend_helper";
+import { addNewCourse, deleteCourse, getCourses, updateCourse } from "helpers/backend_helper";
 
 function* fetchProducts() {
   try {
@@ -104,6 +118,17 @@ function* fetchOrders() {
     yield put(getOrdersFail(error));
   }
 }
+
+
+function* fetchCourse() {
+  try {
+    const response = yield call(getCourses);
+    yield put(getCourseSuccess(response.data));
+  } catch (error) {
+    yield put(getCourseFail(error));
+  }
+}
+
 
 function* fetchCartData() {
   try {
@@ -187,6 +212,39 @@ function* onAddNewOrder({ payload: order }) {
   }
 }
 
+
+
+function* onUpdateCourse({ payload: course}) {
+  try {
+    const response = yield call(updateCourse, course);
+    yield put(updateCourseSuccess(response));
+  } catch (error) {
+    yield put(updateCourseFail(error));
+  }
+}
+
+function* onDeleteCourse({ payload: course }) {
+  try {
+    const response = yield call(deleteCourse, course);
+    yield put(deleteCourseSuccess(response));
+  } catch (error) {
+    yield put(deleteCourseFail(error));
+  }
+}
+
+function* onAddNewCourse({ payload: course }) {
+  try {
+    const response = yield call(addNewCourse, course);
+    yield put(addCourseSuccess(response.data));
+  } catch (error) {
+    yield put(addCourseFail(error));
+  }
+}
+
+
+
+
+
 function* getProductComents() {
   try {
     // todo - add product Id to the payload and api
@@ -239,6 +297,7 @@ function* ecommerceSaga() {
   yield takeEvery(GET_PRODUCTS, fetchProducts);
   yield takeEvery(GET_PRODUCT_DETAIL, fetchProductDetail);
   yield takeEvery(GET_ORDERS, fetchOrders);
+   yield takeEvery(GET_COURSE, fetchCourse);
   yield takeEvery(GET_CART_DATA, fetchCartData);
   yield takeEvery(GET_CUSTOMERS, fetchCustomers);
   yield takeEvery(ADD_NEW_CUSTOMER, onAddNewCustomer);
@@ -248,6 +307,9 @@ function* ecommerceSaga() {
   yield takeEvery(ADD_NEW_ORDER, onAddNewOrder);
   yield takeEvery(UPDATE_ORDER, onUpdateOrder);
   yield takeEvery(DELETE_ORDER, onDeleteOrder);
+  yield takeEvery(ADD_NEW_COURSE, onAddNewCourse);
+  yield takeEvery(UPDATE_COURSE, onUpdateCourse);
+  yield takeEvery(DELETE_COURSE, onDeleteCourse);
   yield takeEvery(GET_PRODUCT_COMMENTS, getProductComents);
   yield takeEvery(ON_LIKE_COMMENT, onLikeComment);
   yield takeEvery(ON_LIKE_REPLY, onLikeReply);
