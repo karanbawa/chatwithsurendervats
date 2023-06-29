@@ -16,7 +16,6 @@ export const GET_BOOKS = "v1/api/book/list";
 export const ADD_NEW_BOOK = "/createbook";
 export const UPDATE_BOOK = "/update/book";
 export const DELETE_BOOK = "/delete/book";
-
 //CUSTOMERS
 export const GET_COURSES = "/v1/api/course/list";
 export const ADD_NEW_COURSE = "/add/course";

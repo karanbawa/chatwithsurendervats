@@ -5,9 +5,7 @@ import { LOGIN_USER, LOGOUT_USER, SOCIAL_LOGIN } from "./actionTypes";
 import { apiError, loginSuccess, logoutUserSuccess } from "./actions";
 import { showToastError , showToastSuccess } from "helpers/toastBuilder";
 //Include Both Helper File with needed methods
-
 import { getFirebaseBackend } from "../../../helpers/firebase_helper";
-
 import { postLogin } from "helpers/backend_helper";
 const fireBaseBackend = getFirebaseBackend();
 

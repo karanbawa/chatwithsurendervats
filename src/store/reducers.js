@@ -58,7 +58,6 @@ import DashboardJob from "./dashboard-jobs/reducer";
 import Books from "./books/reducer";
 import discounts from "./discount/reducer";
 
-
 const rootReducer = combineReducers({
   // public
   Layout,
