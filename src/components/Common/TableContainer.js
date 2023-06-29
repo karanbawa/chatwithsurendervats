@@ -63,9 +63,11 @@ const TableContainer = ({
   isJobListGlobalFilter,
   isAddCourseList,
   isAddOptions,
+  isAddBook,
   isDiscountAddOptions,
   isAddUserList,
   handleOrderClicks,
+  handleBookClicks,
   handleUserClick,
   handleCustomerClick,
   handleCourseClicks,
@@ -166,6 +168,22 @@ const TableContainer = ({
           </Col>
         )}
 
+        {isAddBook && (
+        <Col sm="7">
+           <div className="text-sm-end">
+              <Button
+                type="button"
+                color="success"
+                className="btn-rounded  mb-2 me-2"
+                onClick={handleBookClicks}
+                >
+                <i className="mdi mdi-plus me-1" />
+                Add New Book
+                </Button>
+            </div>
+          </Col>
+        )}
+
      {isAddCourseList && (
           <Col sm="7">
             <div className="text-sm-end">
@@ -181,7 +199,6 @@ const TableContainer = ({
             </div>
           </Col>
         )}
-
         {isDiscountAddOptions && (
           <Col sm="7">
             <div className="text-sm-end">
@@ -189,7 +206,6 @@ const TableContainer = ({
                 type="button"
                 color="success"
                 className="btn-rounded  mb-2 me-2"
-                //onClick={handleOrderClicks}
               >
                 <i className="mdi mdi-plus me-1" />
                 Add New Discount Coupon

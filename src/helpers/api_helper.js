@@ -20,6 +20,10 @@ function authUserItem() {
   axiosApi.defaults.headers.common["Authorization"] = `Bearer ${JSON.parse(localStorage.getItem('authUser'))?.data?.tokens?.accessToken}`;
 }
 
+// function authUserItem() {
+//   axiosApi.defaults.headers.common["Authorization"] = accessToken;
+// }
+
 axiosApi.interceptors.response.use(
   response => response,
   error => Promise.reject(error)

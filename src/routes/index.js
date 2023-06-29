@@ -34,6 +34,10 @@ import TwostepVerification from "../pages/AuthenticationInner/auth-two-step-veri
 import Dashboard from "../pages/Dashboard/index"
 // import DashboardSaas from "../pages/Dashboard-saas/index";
 
+// Books
+import Books from "../pages/Books/index";
+import CreateBook from "../pages/Books/AddNewBook/CreateBook";
+
 // Charts
 import ChartApex from "../pages/Charts/Apexcharts"
 import ChartistChart from "../pages/Charts/ChartistChart"
@@ -113,6 +117,10 @@ const authProtectedRoutes = [
 
   // //profile
   { path: "/profile", component: <UserProfile /> },
+
+  // Books
+  { path: "/books", component: <Books/>},
+  { path: "/createbook", component: <CreateBook/>},
   { path: "/discount", component: <Discount /> },
   //Ecommerce
   {

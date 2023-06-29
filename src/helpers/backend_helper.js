@@ -6,9 +6,6 @@ import * as url from "./url_helper";
 const postRegister = data => post(url.POST_REGISTER, data);
 const postLogin = data => post(url.POST_LOGIN, data);
 
-const getDiscountList = () => get(url.GET_DISCOUNT);
-
-
 // DASHBOARD ITEMS COUNT
 const getSubcriptions = () => get(url.GET_SUBSCRIPTIONS);
 const getStudents = () => get(url.GET_STUDENTS);
@@ -16,6 +13,17 @@ const getVideos = () => get(url.GET_VIDEOS);
 const getRevenue = () => get(url.GET_REVENUE);
 const getRatings = () => get(url.GET_RATINGS);
 const getEarnings = () => get(url.GET_EARNINGS);
+
+// GET BOOKS
+const getBooks = () => get(url.GET_BOOKS);
+// ADD NEW BOOK
+const addNewBook = book => post(url.ADD_NEW_BOOK, book);
+// UPDATE BOOK
+const updateBook = book => put(url.UPDATE_BOOK, book);
+// DELETE BOOK
+const deleteBook = book =>del(url.DELETE_BOOK, { headers: { book } });
+
+const getDiscountList = () => get(url.GET_DISCOUNT);
 
 const getCourses = () => get(url.GET_COURSES);
 
@@ -30,13 +38,17 @@ const deleteCourse = course =>
 
 export {
   postRegister,
+  postLogin,
   getSubcriptions,
   getStudents,
   getVideos,
   getRevenue,
   getRatings,
   getEarnings,
-  postLogin,
+  getBooks,
+  addNewBook,
+  updateBook,
+  deleteBook,
   getDiscountList,
   getCourses,
   addNewCourse,
