@@ -67,6 +67,7 @@ const TableContainer = ({
   isDiscountAddOptions,
   isAddUserList,
   handleOrderClicks,
+  handleDiscountClicks,
   handleBookClicks,
   handleUserClick,
   handleCustomerClick,
@@ -206,6 +207,7 @@ const TableContainer = ({
                 type="button"
                 color="success"
                 className="btn-rounded  mb-2 me-2"
+                onClick={handleDiscountClicks}
               >
                 <i className="mdi mdi-plus me-1" />
                 Add New Discount Coupon

@@ -6,6 +6,7 @@ export const POST_LOGIN = "/v1/login/basic";
 export const GET_SUBSCRIPTIONS = "/v1/api/dashboard/events/subscriptions/count";
 export const GET_STUDENTS = "/v1/api/dashboard/students/count";
 export const GET_DISCOUNT = "v1/api/discount/list";
+export const ADD_DISCOUNT_COUPON = "v1/api/discount/add";
 export const GET_VIDEOS = "/v1/api/dashboard/video/count";
 export const GET_REVENUE = "/v1/api/dashboard/revenue/count";
 export const GET_RATINGS = "/v1/api/dashboard/overallratings";
