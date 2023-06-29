@@ -49,9 +49,11 @@ export {
   addNewBook,
   updateBook,
   deleteBook,
+  postLogin,
   getDiscountList,
   getCourses,
   addNewCourse,
   updateCourse,
   deleteCourse
+};
 };

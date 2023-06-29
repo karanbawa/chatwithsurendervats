@@ -21,3 +21,10 @@ export const GET_COURSES = "/v1/api/course/list";
 export const ADD_NEW_COURSE = "/add/course";
 export const UPDATE_COURSE= "/update/course";
 export const DELETE_COURSE = "/delete/course";
+=======
+//CUSTOMERS
+
+export const GET_COURSES = "/v1/api/course/list";
+export const ADD_NEW_COURSE = "/add/course";
+export const UPDATE_COURSE= "/update/course";
+export const DELETE_COURSE = "/delete/course";
