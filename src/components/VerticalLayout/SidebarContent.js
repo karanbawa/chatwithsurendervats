@@ -151,77 +151,44 @@ const SidebarContent = props => {
                 <i className="bx bx-home-circle"></i>
                 <span>{props.t("Dashboard")}</span>
               </Link>
-              {/* <ul className="sub-menu">
-                <li>
-                  <Link to="/dashboard">{props.t("Default")}</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard-saas">{props.t("Saas")}</Link>
-                </li>
-              </ul> */}
             </li>
 
             <li className="menu-title">{props.t("Apps")}</li>
             <li>
               <Link to="/#" className="has-arrow">
                 <i className="bx bx-store"></i>
-                <span>{props.t("Ecommerce")}</span>
+                <span>{props.t("Users")}</span>
               </Link>
               <ul className="sub-menu">
                 <li>
-                  <Link to="/ecommerce-products">{props.t("Products")}</Link>
+                  <Link to="/admins">{props.t("Admins")}</Link>
                 </li>
                 <li>
-                  <Link to="/ecommerce-product-detail/1">
-                    {props.t("Product Detail")}
-                  </Link>
+                  <Link to="/trainers">{props.t("Trainers")}</Link>
                 </li>
                 <li>
-                  <Link to="/discount">{props.t("Discounts")}</Link>
-                </li>
-                <li>
-                  <Link to="/ecommerce-orders">{props.t("Orders")}</Link>
-                </li>
-                <li>
-                  <Link to="/ecommerce-customers">{props.t("Customers")}</Link>
+                  <Link to="/learners">{props.t("Learners")}</Link>
                 </li>
                 <li>
                   <Link to="/ecommerce-course">{props.t("Course")}</Link>
                 </li>
                 <li>
-                  <Link to="/ecommerce-cart">{props.t("Cart")}</Link>
-                </li>
-                <li>
-                  <Link to="/ecommerce-checkout">{props.t("Checkout")}</Link>
-                </li>
-                <li>
-                  <Link to="/ecommerce-shops">{props.t("Shops")}</Link>
-                </li>
-                <li>
                   <Link to="/books">{props.t("Books")}</Link>
+                </li>
+                <li>
+                  <Link to="/discount">{props.t("Discount Codes")}</Link>
+                </li>
+                <li>
+                  <Link to="/transactions">{props.t("Transactions")}</Link>
                 </li>
                 <li>
                   <Link to="/createbook">{props.t("Create Book")}</Link>
                 </li>
                 <li>
-                  <Link to="/ecommerce-add-product">
-                    {props.t("Add Product")}
-                  </Link>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <Link to="/#" className="has-arrow ">
-                <i className="bx bx-receipt"></i>
-                <span>{props.t("Invoices")}</span>
-              </Link>
-              <ul className="sub-menu">
-                <li>
-                  <Link to="/invoices-list">{props.t("Invoice List")}</Link>
+                  <Link to="/trainers">{props.t("Invoices")}</Link>
                 </li>
                 <li>
-                  <Link to="/invoices-detail">{props.t("Invoice Detail")}</Link>
+                  <Link to="/ecommerce-orders">{props.t("Orders")}</Link>
                 </li>
               </ul>
             </li>

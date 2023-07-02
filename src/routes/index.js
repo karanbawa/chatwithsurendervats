@@ -5,18 +5,8 @@ import { Navigate } from "react-router-dom"
 import UserProfile from "../pages/Authentication/user-profile"
 
 // //Ecommerce Pages
-import EcommerceProducts from "../pages/Ecommerce/EcommerceProducts/index"
-import EcommerceProductDetail from "../pages/Ecommerce/EcommerceProducts/EcommerceProductDetail"
 import EcommerceOrders from "../pages/Ecommerce/EcommerceOrders/index"
-import EcommerceCustomers from "../pages/Ecommerce/EcommerceCustomers/index"
-import EcommerceCart from "../pages/Ecommerce/EcommerceCart"
-import EcommerceCheckout from "../pages/Ecommerce/EcommerceCheckout"
-import EcommerceShops from "../pages/Ecommerce/EcommerceShops/index"
-import EcommerceAddProduct from "../pages/Ecommerce/EcommerceAddProduct"
 import EcommerceCourses from "../pages/Ecommerce/EcommerceCourses/index";
-//Invoices
-import InvoicesList from "../pages/Invoices/invoices-list"
-import InvoiceDetail from "../pages/Invoices/invoices-detail"
 
 // Authentication related pages
 import Login from "../pages/Authentication/Login"
@@ -110,6 +100,10 @@ import PagesPricing from "../pages/Utility/pages-pricing"
 import Pages404 from "../pages/Utility/pages-404"
 import Pages500 from "../pages/Utility/pages-500"
 import Discount from "pages/Discount"
+import Invoices from "pages/Transactions/Invoices"
+import Learners from "pages/Learners"
+import Trainers from "pages/Trainers"
+import Admins from "pages/Admins"
 
 
 const authProtectedRoutes = [
@@ -122,25 +116,14 @@ const authProtectedRoutes = [
   { path: "/books", component: <Books/>},
   { path: "/createbook", component: <CreateBook/>},
   { path: "/discount", component: <Discount /> },
-  //Ecommerce
-  {
-    path: "/ecommerce-product-detail/:id",
-    component: <EcommerceProductDetail />,
-  },
-  { path: "/ecommerce-products", component: <EcommerceProducts /> },
-  { path: "/ecommerce-orders", component: <EcommerceOrders /> },
-  { path: "/ecommerce-customers", component: <EcommerceCustomers /> },
-  { path: "/ecommerce-cart", component: <EcommerceCart /> },
-  { path: "/ecommerce-checkout", component: <EcommerceCheckout /> },
-  { path: "/ecommerce-shops", component: <EcommerceShops /> },
-  { path: "/ecommerce-add-product", component: <EcommerceAddProduct /> },
-  { path: "/ecommerce-course", component: <EcommerceCourses/> },
+  { path: "/transactions", component: <Invoices/> },
+  { path: "/learners", component: <Learners /> },
+  { path: "/trainers", component: <Trainers /> },
+  { path: "/admins", component: <Admins /> },
   
-
-  //Invoices
-  { path: "/invoices-list", component: <InvoicesList /> },
-  { path: "/invoices-detail/:id", component: <InvoiceDetail /> },
-  { path: "/invoices-detail", component: <InvoiceDetail /> },
+  //Ecommerce
+  { path: "/ecommerce-orders", component: <EcommerceOrders /> },
+  { path: "/ecommerce-course", component: <EcommerceCourses/> },
 
   //Charts
   { path: "/apex-charts", component: <ChartApex /> },

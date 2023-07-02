@@ -7,19 +7,19 @@ const CustId = (cell) => {
     );
 };
 
-const UserName = (cell) => {
+const Name = (cell) => {
     return cell.value ? cell.value : '';
 };
 
-const PhoneEmail = (cell) => {
+const Email = (cell) => {
     return cell.value ? cell.value : '';
 };
 
-const Address = (cell) => {
+const Role = (cell) => {
     return cell.value ? cell.value : '';
 };
 
-const Rating = (cell) => {
+const LastLogin = (cell) => {
     return (
         <span className="bg-success font-size-12 badge bg-success"><i className="mdi mdi-star me-1"></i>{cell.value}</span>
     )
@@ -35,10 +35,10 @@ const JoiningDate = (cell) => {
 
 export {
     CustId,
-    UserName,
-    PhoneEmail,
-    Address,
-    Rating,
+    Name,
+    Email,
+    Role,
+    LastLogin,
     WalletBalances,
     JoiningDate,
 };
