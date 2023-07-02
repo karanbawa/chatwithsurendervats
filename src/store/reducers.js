@@ -59,6 +59,14 @@ import Books from "./books/reducer";
 
 import discounts from "./discount/reducer";
 
+import transactions from "./transactions/reducer";
+
+import learners from './learners/reducer';
+
+import customers from "./customers/reducer";
+
+import trainers from "./Trainers/reducer"
+
 const rootReducer = combineReducers({
   // public
   Layout,
@@ -82,7 +90,11 @@ const rootReducer = combineReducers({
   DashboardBlog,
   DashboardJob,
   Books,
-  discounts
+  discounts,
+  transactions,
+  learners,
+  customers,
+  trainers
 });
 
 export default rootReducer;

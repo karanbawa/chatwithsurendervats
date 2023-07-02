@@ -37,6 +37,21 @@ const updateCourse = course => put(url.UPDATE_COURSE, course)
 // delete courses
 const deleteCourse = course => del(url.DELETE_COURSE, { headers: { course } })
 
+// get tasks
+export const getTransactions = () => get(url.GET_TRANSACTIONS);
+
+// Customers
+export const getCustomersList = () => get(url.GET_CUSTOMERS_LIST);
+
+// Learners
+export const getLearnersList = () => get(url.GET_LEARNERS_LIST);
+
+// Trainers
+export const getTrainersList = () => get(url.GET_TRAINERS_LIST);
+
+// Admins
+export const getAdminList = () => get(url.GET_ADMIN_LIST);
+
 export {
   postRegister,
   postLogin,

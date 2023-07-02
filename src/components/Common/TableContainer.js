@@ -62,12 +62,21 @@ const TableContainer = ({
   isGlobalFilter,
   isJobListGlobalFilter,
   isAddCourseList,
+  isAddAdminDetails,
   isAddOptions,
+  isAddTrainersList,
+  isAddLearnerList,
   isAddBook,
+  isAddTransactionOptions,
+  handleAdminClicks,
+  handleAddLearnersList,
+  handleAddTrainersList,
+  balance,
   isDiscountAddOptions,
   isAddUserList,
   handleOrderClicks,
   handleDiscountClicks,
+  handleWithdrawTransactionClicks,
   handleBookClicks,
   handleUserClick,
   handleCustomerClick,
@@ -168,6 +177,54 @@ const TableContainer = ({
             </div>
           </Col>
         )}
+        {isAddTrainersList && (
+          <Col sm="7">
+            <div className="text-sm-end">
+              <Button
+                type="button"
+                color="success"
+                className="btn-rounded  mb-2 me-2"
+                onClick={handleAddTrainersList}
+              >
+                <i className="mdi mdi-plus me-1" />
+                Add Trainer
+              </Button>
+            </div>
+          </Col>
+        )}
+        {isAddLearnerList && (
+          <Col sm="7">
+            <div className="text-sm-end">
+              <Button
+                type="button"
+                color="success"
+                className="btn-rounded  mb-2 me-2"
+                onClick={handleAddLearnersList}
+              >
+                <i className="mdi mdi-plus me-1" />
+                Add Learner
+              </Button>
+            </div>
+          </Col>
+        )}
+        {isAddTransactionOptions && (
+          <Col sm="7">
+            <div className="text-sm-end d-flex justify-content-end gap-4">
+            <h4 className="mt-2">
+                    Balance : Rs {balance}
+                  </h4>
+              <Button
+                type="button"
+                color="success"
+                className="btn-rounded  mb-2 me-2"
+                onClick={handleWithdrawTransactionClicks}
+              >
+                <i className="mdi mdi-plus me-1" />
+                Withdraw Invoices
+              </Button>
+            </div>
+          </Col>
+        )}
 
         {isAddBook && (
         <Col sm="7">
@@ -185,6 +242,22 @@ const TableContainer = ({
           </Col>
         )}
 
+      {isAddAdminDetails && (
+          <Col sm="7">
+            <div className="text-sm-end">
+              <Button
+                type="button"
+                color="success"
+                className="btn-rounded mb-2 me-2"
+                onClick={handleAdminClicks}
+              >
+                <i className="mdi mdi-plus me-1" />
+                Add Admins 
+              </Button>
+            </div>
+          </Col>
+        )}
+    
      {isAddCourseList && (
           <Col sm="7">
             <div className="text-sm-end">

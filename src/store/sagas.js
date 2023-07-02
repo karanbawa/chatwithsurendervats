@@ -23,6 +23,11 @@ import dashboardBlogSaga from "./dashboard-blog/saga";
 import dashboardJobSaga from "./dashboard-jobs/saga";
 import booksSaga from "./books/saga";
 import discountSaga from "./discount/saga";
+import transactionSaga from "./transactions/saga";
+import trainersSaga from "./transactions/saga";
+import learnersSaga from "./learners/saga";
+import customersSaga from "./customers/saga";
+import adminsSaga from "./admins/saga";
 
 export default function* rootSaga() {
   yield all([
@@ -48,6 +53,11 @@ export default function* rootSaga() {
     fork(dashboardBlogSaga),
     fork(dashboardJobSaga),
     fork(booksSaga),
-    fork(discountSaga)
+    fork(discountSaga),
+    fork(trainersSaga),
+    fork(learnersSaga),
+    fork(customersSaga),
+    fork(transactionSaga),
+    fork(adminsSaga)
   ]);
 }

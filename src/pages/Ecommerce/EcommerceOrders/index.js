@@ -310,7 +310,7 @@ function EcommerceOrder() {
                 className="text-danger"
                 onClick={() => {
                   const orderData = cellProps.row.original;
-                  onClickDelete(orderData);
+                  // onClickDelete(orderData);
                 }}
               >
                 <i className="mdi mdi-delete font-size-18" id="deletetooltip" />

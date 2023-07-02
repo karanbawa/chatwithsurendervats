@@ -28,7 +28,7 @@ import {
 //Import Breadcrumb
 import Breadcrumbs from "components/Common/Breadcrumb";
 
-import DeleteModal from "../../../components/Common/DeleteModal";
+import DeleteModal from "../../components/Common/DeleteModal";
 import {
   getCustomers as onGetCustomers,
   addNewCustomer as onAddNewCustomer,
@@ -38,23 +38,21 @@ import {
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import TableContainer from '../../../components/Common/TableContainer';
+import TableContainer from '../../components/Common/TableContainer';
 
 
 // Column
 import {
-  UserName,
-  PhoneEmail,
-  Address,
-  Rating,
-  WalletBalances,
+  Name,
+  Email,
+  Phone,
   JoiningDate,
-} from './EcommerceCustCol';
+} from './CustCol';
 
-const EcommerceCustomers = props => {
+const Trainers = props => {
 
   //meta title
-  document.title = "Customers | TWT -Train With Trainer";
+  document.title = "Trainers | TWT -Train With Trainer";
 
   const dispatch = useDispatch();
 
@@ -73,57 +71,62 @@ const EcommerceCustomers = props => {
     enableReinitialize: true,
 
     initialValues: {
-      username: (customer && customer.username) || '',
-      phone: (customer && customer.phone) || '',
+      name: (customer && customer.username) || '',
       email: (customer && customer.email) || '',
-      address: (customer && customer.address) || '',
-      rating: (customer && customer.rating) || '',
-      walletBalance: (customer && customer.walletBalance) || '',
-      joiningDate: (customer && customer.joiningDate) || '',
+      phone: (customer && customer.phone) || '',
+      password: (customer && customer.password) || '',
+      sendEmailToUser: (customer && customer.sendEmailToUser) || '',
+      editingOfPublishedCourses: (customer && customer.editingOfPublishedCourses) || '',
+      accessToSalesDashboard: (customer && customer.accessToSalesDashboard) || '',
+      accessToLearnersDetails: (customer && customer.accessToLearnersDetails) || '',
+      accessToLearnersToEnrollCourse: (customer && customer.accessToLearnersToEnrollCourse) || '',
+      accessToDownloadCourse: (customer && customer.accessToDownloadCourse) || '',
     },
     validationSchema: Yup.object({
-      username: Yup.string().required("Please Enter Your Name"),
-      phone: Yup.string().required("Please Enter Your Phone"),
+      name: Yup.string().required("Please Enter Your Name"),
       email: Yup.string().matches(
         /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
         "Please Enter Valid Email"
       ).required("Please Enter Your Email"),
-      address: Yup.string().required("Please Enter Your Address"),
-      rating: Yup.string().matches(
-        /\b([0-9]|10)\b/,
-        "Please Enter Valid Rating"
-      ).required("Please Enter Your Rating"),
-      walletBalance: Yup.string().required("Please Enter Your Wallet Balance"),
-      joiningDate: Yup.string().required("Please Enter Your Joining Date"),
+      phone: Yup.string().required("Please Enter Your Phone"),
+      password: Yup.string()
+        .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,16}$/,
+          'Password must have at least one uppercase letter, one numeric digit, one special character, and be 8-16 characters long')
+        .required("Please Enter Your Password")
     }),
     onSubmit: (values) => {
       if (isEdit) {
-        const updateCustomer = {
-          id: customer ? customer.id : 0,
-          username: values.username,
-          phone: values.phone,
+        const updateTrainer = {
+          name: values.name,
           email: values.email,
-          address: values.address,
-          rating: values.rating,
-          walletBalance: values.walletBalance,
-          joiningDate: values.joiningDate,
+          phone: values.phone,
+          password: values.password,
+          sendEmailToUser: values.sendEmailToUser,
+          editingOfPublishedCourses: values.editingOfPublishedCourses,
+          accessToSalesDashboard: values.accessToSalesDashboard,
+          accessToLearnersDetails: values.accessToLearnersDetails,
+          accessToLearnersToEnrollCourse: values.accessToLearnersToEnrollCourse,
+          accessToDownloadCourse: values.accessToDownloadCourse
         };
         // update customer
-        dispatch(onUpdateCustomer(updateCustomer));
+        dispatch(onUpdateCustomer(updateTrainer));
         validation.resetForm();
       } else {
-        const newCustomer = {
+        const newTrainer = {
           id: Math.floor(Math.random() * (30 - 20)) + 20,
-          username: values["username"],
-          phone: values["phone"],
+          name: values["name"],
           email: values["email"],
-          address: values["address"],
-          rating: values["rating"],
-          walletBalance: values["walletBalance"],
-          joiningDate: values["joiningDate"],
+          phone: values["phone"],
+          password: values["password"],
+          sendEmailToUser: values["sendEmailToUser"],
+          editingOfPublishedCourses: values["editingOfPublishedCourses"],
+          accessToSalesDashboard: values["accessToSalesDashboard"],
+          accessToLearnersDetails: values["accessToLearnersDetails"],
+          accessToLearnersToEnrollCourse: values["accessToLearnersToEnrollCourse"],
+          accessToDownloadCourse: values["accessToDownloadCourse"]
         };
         // save new customer
-        dispatch(onAddNewCustomer(newCustomer));
+        dispatch(onAddNewCustomer(newTrainer));
         validation.resetForm();
       }
       toggle();
@@ -151,52 +154,30 @@ const EcommerceCustomers = props => {
   // Customber Column
   const columns = useMemo(
     () => [
-
       {
-        Header: '#',
-        Cell: () => {
-          return <input type="checkbox" className="form-check-input" />;
-        }
-      },
-      {
-        Header: 'Username',
+        Header: 'Name',
         accessor: 'username',
         filterable: true,
         Cell: (cellProps) => {
-          return <UserName {...cellProps} />;
+          return <Name {...cellProps} />;
         }
       },
       {
-        Header: 'Phone / Email',
-        accessor: 'phone',
+        Header: 'Email',
+        accessor: 'email',
         filterable: true,
         Cell: (cellProps) => {
-          return <PhoneEmail {...cellProps} />;
+          return <Email {...cellProps} />;
           ;
         }
       },
       {
-        Header: 'Address',
-        accessor: 'address',
+        Header: 'Phone',
+        accessor: 'phone',
         filterable: true,
         Cell: (cellProps) => {
-          return <Address {...cellProps} />;
-        }
-      },
-      {
-        Header: 'Rating',
-        accessor: 'rating',
-        filterable: true,
-        Cell: (cellProps) => {
-          return <Rating {...cellProps} />;
-        }
-      },
-      {
-        Header: 'Wallet Balances',
-        accessor: 'walletBalance',
-        filterable: true,
-        Cell: (cellProps) => {
-          return <WalletBalances {...cellProps} />;
+          return <Phone {...cellProps} />;
+          ;
         }
       },
       {
@@ -290,7 +271,7 @@ const EcommerceCustomers = props => {
     }
   }, [customers]);
 
-  const handleCustomerClicks = () => {
+  const handleAddTrainersList = () => {
     setCustomerList("");
     setIsEdit(false);
     toggle();
@@ -305,7 +286,7 @@ const EcommerceCustomers = props => {
       />
       <div className="page-content">
         <Container fluid>
-          <Breadcrumbs title="Ecommerce" breadcrumbItem="Customers" />
+          <Breadcrumbs title="Trainers" breadcrumbItem="Trainers" />
           <Row>
             <Col xs="12">
               <Card>
@@ -314,17 +295,15 @@ const EcommerceCustomers = props => {
                     columns={columns}
                     data={customers}
                     isGlobalFilter={true}
-                    isAddCustList={true}
-                    handleCustomerClick={handleCustomerClicks}
+                    isAddTrainersList={true}
+                    handleAddTrainersList={handleAddTrainersList}
                     customPageSize={10}
                     className="custom-header-css"
                   />
 
                   <Modal isOpen={modal} toggle={toggle}>
                     <ModalHeader toggle={toggle} tag="h4">
-                      {!!isEdit
-                        ? "Edit Customer"
-                        : "Add Customer"}
+                      {"Add Trainers"}
                     </ModalHeader>
                     <ModalBody>
                       <Form
@@ -337,43 +316,25 @@ const EcommerceCustomers = props => {
                         <Row>
                           <Col className="col-12">
                             <div className="mb-3">
-                              <Label className="form-label">UserName</Label>
+                              <Label className="form-label">Name <span className="text-danger">*</span></Label>
                               <Input
-                                name="username"
+                                name="name"
                                 type="text"
-                                placeholder="Insert User Name"
+                                placeholder="Insert Name"
                                 onChange={validation.handleChange}
                                 onBlur={validation.handleBlur}
-                                value={validation.values.username || ""}
+                                value={validation.values.name || ""}
                                 invalid={
-                                  validation.touched.username && validation.errors.username ? true : false
+                                  validation.touched.name && validation.errors.name ? true : false
                                 }
                               />
-                              {validation.touched.username && validation.errors.username ? (
-                                <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
+                              {validation.touched.name && validation.errors.name ? (
+                                <FormFeedback type="invalid">{validation.errors.name}</FormFeedback>
                               ) : null}
                             </div>
 
                             <div className="mb-3">
-                              <Label className="form-label">Phone No</Label>
-                              <Input
-                                name="phone"
-                                type="text"
-                                placeholder="Insert Phone No"
-                                onChange={validation.handleChange}
-                                onBlur={validation.handleBlur}
-                                value={validation.values.phone || ""}
-                                invalid={
-                                  validation.touched.phone && validation.errors.phone ? true : false
-                                }
-                              />
-                              {validation.touched.phone && validation.errors.phone ? (
-                                <FormFeedback type="invalid">{validation.errors.phone}</FormFeedback>
-                              ) : null}
-                            </div>
-
-                            <div className="mb-3">
-                              <Label className="form-label">Email Id</Label>
+                              <Label className="form-label">Email Id <span className="text-danger">*</span></Label>
                               <Input
                                 name="email"
                                 type="email"
@@ -391,75 +352,106 @@ const EcommerceCustomers = props => {
                             </div>
 
                             <div className="mb-3">
-                              <Label className="form-label">Address</Label>
+                              <Label className="form-label">Phone No <span className="text-danger">*</span></Label>
                               <Input
-                                name="address"
-                                type="textarea"
-                                placeholder="Insert Address"
-                                rows="3"
-                                onChange={validation.handleChange}
-                                onBlur={validation.handleBlur}
-                                value={validation.values.address || ""}
-                                invalid={
-                                  validation.touched.address && validation.errors.address ? true : false
-                                }
-                              />
-                              {validation.touched.address && validation.errors.address ? (
-                                <FormFeedback type="invalid">{validation.errors.address}</FormFeedback>
-                              ) : null}
-                            </div>
-
-                            <div className="mb-3">
-                              <Label className="form-label">Rating</Label>
-                              <Input
-                                name="rating"
+                                name="phone"
                                 type="text"
-                                placeholder="Insert Rating"
+                                placeholder="Insert Phone No"
                                 onChange={validation.handleChange}
                                 onBlur={validation.handleBlur}
-                                value={validation.values.rating || ""}
+                                value={validation.values.phone || ""}
                                 invalid={
-                                  validation.touched.rating && validation.errors.rating ? true : false
+                                  validation.touched.phone && validation.errors.phone ? true : false
                                 }
                               />
-                              {validation.touched.rating && validation.errors.rating ? (
-                                <FormFeedback type="invalid">{validation.errors.rating}</FormFeedback>
+                              {validation.touched.phone && validation.errors.phone ? (
+                                <FormFeedback type="invalid">{validation.errors.phone}</FormFeedback>
                               ) : null}
                             </div>
 
                             <div className="mb-3">
-                              <Label className="form-label">Wallet Balance</Label>
+                              <Label className="form-label">Password <span className="text-danger">*</span></Label>
                               <Input
-                                name="walletBalance"
+                                name="password"
                                 type="text"
-                                placeholder="Insert Wallet Balance"
+                                placeholder="Insert Password"
                                 onChange={validation.handleChange}
                                 onBlur={validation.handleBlur}
-                                value={validation.values.walletBalance || ""}
+                                value={validation.values.password || ""}
                                 invalid={
-                                  validation.touched.walletBalance && validation.errors.walletBalance ? true : false
+                                  validation.touched.password && validation.errors.password ? true : false
                                 }
                               />
-                              {validation.touched.walletBalance && validation.errors.walletBalance ? (
-                                <FormFeedback type="invalid">{validation.errors.walletBalance}</FormFeedback>
+                              {validation.touched.password && validation.errors.password ? (
+                                <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
                               ) : null}
                             </div>
 
                             <div className="mb-3">
-                              <Label className="form-label">Joining Date</Label>
+                              <label className="form-label">Send Email To User</label>
                               <Input
-                                name="joiningDate"
-                                type="date"
+                                name="sendEmailToUser"
+                                type="checkbox"
+                                className="mx-4"
                                 onChange={validation.handleChange}
                                 onBlur={validation.handleBlur}
-                                value={validation.values.joiningDate || ""}
-                                invalid={
-                                  validation.touched.joiningDate && validation.errors.joiningDate ? true : false
-                                }
+                                value={validation.values.editingOfPublishedCourses || ""}
                               />
-                              {validation.touched.joiningDate && validation.errors.joiningDate ? (
-                                <FormFeedback type="invalid">{validation.errors.joiningDate}</FormFeedback>
-                              ) : null}
+                            </div>
+                            <div className="mb-3">
+                              <label className="form-label">Editing of published courses</label>
+                              <Input
+                                name="editingOfPublishedCourses"
+                                type="checkbox"
+                                className="mx-4"
+                                onChange={validation.handleChange}
+                                onBlur={validation.handleBlur}
+                                value={validation.values.editingOfPublishedCourses || ""}
+                              />
+                            </div>
+                            <div className="mb-3">
+                              <label className="form-label">Access to Sales Dashboard</label>
+                              <Input
+                                name="accessToSalesDashboard"
+                                type="checkbox"
+                                className="mx-4"
+                                onChange={validation.handleChange}
+                                onBlur={validation.handleBlur}
+                                value={validation.values.accessToSalesDashboard || ""}
+                              />
+                            </div>
+                            <div className="mb-3">
+                              <label className="form-label">Access to Learner Details</label>
+                              <Input
+                                name="accessToLearnersDetails"
+                                type="checkbox"
+                                className="mx-4"
+                                onChange={validation.handleChange}
+                                onBlur={validation.handleBlur}
+                                value={validation.values.accessToLearnersDetails || ""}
+                              />
+                            </div>
+                            <div className="mb-3">
+                              <label className="form-label">Access to Learner to Enroll Course</label>
+                              <Input
+                                name="accessToLearnersToEnrollCourse"
+                                type="checkbox"
+                                className="mx-4"
+                                onChange={validation.handleChange}
+                                onBlur={validation.handleBlur}
+                                value={validation.values.accessToLearnersToEnrollCourse || ""}
+                              />
+                            </div>
+                            <div className="mb-3">
+                              <label className="form-label">Access to Download Course</label>
+                              <Input
+                                name="accessToDownloadCourse"
+                                type="checkbox"
+                                className="mx-4"
+                                onChange={validation.handleChange}
+                                onBlur={validation.handleBlur}
+                                value={validation.values.accessToDownloadCourse || ""}
+                              />
                             </div>
                           </Col>
                         </Row>
@@ -489,7 +481,7 @@ const EcommerceCustomers = props => {
   );
 };
 
-EcommerceCustomers.propTypes = {
+Trainers.propTypes = {
   customers: PropTypes.array,
   onGetCustomers: PropTypes.func,
   onAddNewCustomer: PropTypes.func,
@@ -497,4 +489,4 @@ EcommerceCustomers.propTypes = {
   onUpdateCustomer: PropTypes.func,
 };
 
-export default EcommerceCustomers;
+export default Trainers;

@@ -22,3 +22,18 @@ export const GET_COURSES = "/v1/api/course/list";
 export const ADD_NEW_COURSE = "/add/course";
 export const UPDATE_COURSE= "/update/course";
 export const DELETE_COURSE = "/delete/course";
+
+// Transactions
+export const GET_TRANSACTIONS = "/v2/api/transactions/list";
+
+// CUSTOMERS LIST
+export const GET_CUSTOMERS_LIST = 'v1/api/customer/list';
+
+// learners List
+export const GET_LEARNERS_LIST = 'v1/api/learners/list';
+
+// trainers List
+export const GET_TRAINERS_LIST = 'v1/api/trainers/list';
+
+// Admin
+export const GET_ADMIN_LIST = 'v1/api/admin/list';
