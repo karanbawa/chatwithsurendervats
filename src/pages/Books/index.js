@@ -70,7 +70,7 @@ function Books() {
 
     return (
       <Badge
-        className={"font-size-12 badge-soft-" + (statusText === "Active" ? "Active" : "Inactive")}
+        className={`font-size-12 badge-soft-${(statusText === "Active" ? "Active" : "Inactive")} bg-${(statusText === "Active" ? "success" : "secondary")}`}
       >
         {statusText}
       </Badge>
